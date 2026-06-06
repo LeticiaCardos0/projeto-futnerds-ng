@@ -1,0 +1,130 @@
+Análise do Trabalho do Projeto Futnerds - Manus
+quantidade de jogadores nao precisa ter
+Entendi! Vou remover a coluna de "Quantidade de Jogadores" da tabela de Times. Deixa eu atualizar o arquivo...
+
+Pronto! Atualizei os arquivos de Times removendo a coluna de "Quantidade de Jogadores".
+Substitua os arquivos:
+src/app/pages/times/times.component.ts - Use o arquivo times-novo.component.ts
+src/app/pages/times/times.component.html - Use o arquivo times-novo.component.html
+📊 Tabela de Times (Atualizada)
+Logo
+Nome
+País
+Liga
+Orçamento
+Ações
+🖼️
+Real Madrid
+Espanha
+La Liga
+R$ 620M
+Selecionar
+🖼️
+Manchester City
+Inglaterra
+Premier League
+R$ 580M
+Selecionar
+🖼️
+PSG
+França
+Ligue 1
+R$ 550M
+Selecionar
+Agora ficou mais limpo! 🎯
+times-novo.component.ts
+Código · 1.94 KB
+times-novo.component.html
+Código · 2.81 KB
+Ver todos os arquivos nesta tarefa
+Tarefa concluída
+Como foi este resultado?
+Sugestões de acompanhamento
+<div class="min-h-screen bg-[#0a0b0f] pt-20 pb-10">
+  <div class="max-w-7xl mx-auto px-5">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-white mb-2">Times</h1>
+      <p class="text-gray-400">Gerenciamento de times e suas informações</p>
+
+
+
+GitHub
+
+
+<div class="min-h-screen bg-[#0a0b0f] pt-20 pb-10">
+  <div class="max-w-7xl mx-auto px-5">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-white mb-2">Times</h1>
+      <p class="text-gray-400">Gerenciamento de times e suas informações</p>
+    </div>
+
+    <!-- Tabela de Times -->
+    <div class="bg-[#13151c] border border-[#1e2130] rounded-lg overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <!-- Header da Tabela -->
+          <thead>
+            <tr class="bg-[#161820] border-b border-[#1e2130]">
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Logo</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Nome</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">País</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Liga</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Orçamento</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Ações</th>
+            </tr>
+          </thead>
+
+          <!-- Corpo da Tabela -->
+          <tbody>
+            <tr *ngFor="let time of times" class="border-b border-[#1e2130] hover:bg-[#161820] transition">
+              <!-- Logo -->
+              <td class="px-6 py-4">
+                <img 
+                  [src]="time.logo" 
+                  [alt]="time.nome"
+                  class="w-10 h-10 rounded object-cover"
+                />
+              </td>
+
+              <!-- Nome -->
+              <td class="px-6 py-4">
+                <span class="text-white font-medium">{{ time.nome }}</span>
+              </td>
+
+              <!-- País -->
+              <td class="px-6 py-4">
+                <span class="text-gray-300">{{ time.pais }}</span>
+              </td>
+
+              <!-- Liga -->
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium">
+                  {{ time.liga }}
+                </span>
+              </td>
+
+              <!-- Orçamento -->
+              <td class="px-6 py-4">
+                <span class="text-gray-300">{{ formatarMoeda(time.orcamento) }}</span>
+              </td>
+
+              <!-- Ações -->
+              <td class="px-6 py-4">
+                <button class="px-3 py-1 bg-green-500 text-black rounded hover:bg-green-600 transition text-sm font-medium">
+                  Selecionar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Informação se vazio -->
+    <div *ngIf="times.length === 0" class="text-center py-12">
+      <p class="text-gray-400">Nenhum time encontrado</p>
+    </div>
+  </div>
+</div>
