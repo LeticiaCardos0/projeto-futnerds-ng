@@ -1,0 +1,94 @@
+<div class="min-h-screen bg-[#0a0b0f] pt-20 pb-10">
+  <div class="max-w-7xl mx-auto px-5">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-white mb-2">Jogadores</h1>
+      <p class="text-gray-400">Gerenciamento de jogadores do seu time</p>
+    </div>
+
+    <!-- Tabela de Jogadores -->
+    <div class="bg-[#13151c] border border-[#1e2130] rounded-lg overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <!-- Header da Tabela -->
+          <thead>
+            <tr class="bg-[#161820] border-b border-[#1e2130]">
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Foto</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Nome</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Idade</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Posição</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Time Atual</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Salário</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Valor</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Multa</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Ações</th>
+            </tr>
+          </thead>
+
+          <!-- Corpo da Tabela -->
+          <tbody>
+            <tr *ngFor="let jogador of jogadores" class="border-b border-[#1e2130] hover:bg-[#161820] transition">
+              <!-- Foto -->
+              <td class="px-6 py-4">
+                <img 
+                  [src]="jogador.foto" 
+                  [alt]="jogador.nome"
+                  class="w-10 h-10 rounded-full object-cover"
+                />
+              </td>
+
+              <!-- Nome -->
+              <td class="px-6 py-4">
+                <span class="text-white font-medium">{{ jogador.nome }}</span>
+              </td>
+
+              <!-- Idade -->
+              <td class="px-6 py-4">
+                <span class="text-gray-300">{{ jogador.idade }} anos</span>
+              </td>
+
+              <!-- Posição -->
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-medium">
+                  {{ jogador.posicao }}
+                </span>
+              </td>
+
+              <!-- Time Atual -->
+              <td class="px-6 py-4">
+                <span class="text-gray-300">{{ jogador.timeAtual }}</span>
+              </td>
+
+              <!-- Salário -->
+              <td class="px-6 py-4">
+                <span class="text-gray-300">{{ formatarMoeda(jogador.salario) }}</span>
+              </td>
+
+              <!-- Valor -->
+              <td class="px-6 py-4">
+                <span class="text-gray-300">{{ formatarMoeda(jogador.valor) }}</span>
+              </td>
+
+              <!-- Multa -->
+              <td class="px-6 py-4">
+                <span class="text-gray-300">{{ formatarMoeda(jogador.multa) }}</span>
+              </td>
+
+              <!-- Ações -->
+              <td class="px-6 py-4">
+                <button class="px-3 py-1 bg-green-500 text-black rounded hover:bg-green-600 transition text-sm font-medium">
+                  Adicionar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Informação se vazio -->
+    <div *ngIf="jogadores.length === 0" class="text-center py-12">
+      <p class="text-gray-400">Nenhum jogador encontrado</p>
+    </div>
+  </div>
+</div>
