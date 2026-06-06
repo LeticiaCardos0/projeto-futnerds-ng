@@ -1,108 +1,126 @@
 <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#0a0b0f]/95 backdrop-blur-md">
   <div class="max-w-7xl mx-auto px-5">
-    <div class="flex items-center justify-between h-16 gap-4">
+    <div class="flex items-center justify-between h-16">
 
-      <a routerLink="/" class="flex items-center gap-2">
+      <!-- Logo -->
+      <a routerLink="/" class="flex items-center gap-3">
         <img
           src="https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/logo-futnerds_8f14a724.png"
-          alt="FUTNERDS" class="w-10 h-10 object-contain transition-transform duration-300 hover:scale-110" />
+          alt="FUTNERDS"
+          class="w-10 h-10 object-contain transition-transform duration-300 hover:scale-110"
+        />
 
         <span class="text-white font-bold text-xl tracking-wider">
           FUT<span class="text-green-500">NERDS</span>
         </span>
       </a>
 
+      <!-- Menu -->
       <div class="hidden md:flex items-center gap-1">
-        <a routerLink="/jogadores"
-          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition">
+
+        <a
+          routerLink="/jogadores"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition"
+        >
           Jogadores
         </a>
-        <a routerLink="/times"
-          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition">
-          Times
+
+        <a
+          routerLink="/times"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition"
+        >
+          Clubes
         </a>
 
-        <a routerLink="/elenco"
-          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition">
-          Monte Seu Elenco
+        <a
+          routerLink="/elenco"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition"
+        >
+          Elenco
         </a>
 
+        <!-- Financeiro -->
         <div class="relative group">
+
           <button
-            class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition flex items-center gap-2">
+            class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition flex items-center gap-2"
+          >
             Financeiro
 
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
             </svg>
           </button>
 
-          <div class="relative group">
-            <button
-              class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition flex items-center gap-2">
-              💰 Financeiro
-            </button>
+          <div
+            class="absolute left-0 top-full mt-2 w-72 bg-[#13151c] border border-[#1e2130] rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+          >
 
-            <div
-              class="absolute left-0 top-full mt-1 w-64 bg-[#13151c] border border-[#1e2130] rounded-lg shadow-xl hidden group-hover:block">
+            <a
+              routerLink="/transferencias"
+              class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white rounded-t-xl"
+            >
+             Transferências
+            </a>
 
-              <!-- Transferências -->
-              <div class="relative group/submenu">
-                <button
-                  class="w-full text-left px-4 py-3 text-gray-300 hover:bg-[#161820] flex justify-between items-center">
-                  🔄 Transferências
-                  <span>›</span>
-                </button>
+            <a
+              routerLink="/orcamento"
+              class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white"
+            >
+              Orçamento
+            </a>
 
-                <div
-                  class="absolute left-full top-0 ml-1 w-56 bg-[#13151c] border border-[#1e2130] rounded-lg shadow-xl hidden group-hover/submenu:block">
-                  <a routerLink="/comprar-jogador" class="block px-4 py-3 hover:bg-[#161820]">
-                    Comprar Jogadores
-                  </a>
-                  <a routerLink="/vender-jogador" class="block px-4 py-3 hover:bg-[#161820]">
-                    Vender Jogadores
-                  </a>
-                  <a routerLink="/historico-transferencias" class="block px-4 py-3 hover:bg-[#161820]">
-                    Histórico
-                  </a>
-                </div>
-              </div>
+            <a
+              routerLink="/comissao-tecnica"
+              class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white"
+            >
+              Comissão Técnica
+            </a>
+            <a
+              routerLink="/patrocinios"
+              class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white"
+            >
+              Patrocínios
+            </a>
 
-              <!-- Orçamento -->
-              <a routerLink="/orcamento" class="block px-4 py-3 text-gray-300 hover:bg-[#161820]">
-                📊 Orçamento
-              </a>
+            <a
+              routerLink="/relatorios-financeiros"
+              class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white rounded-b-xl"
+            >
+              Relatórios Financeiros
+            </a>
 
-              <!-- Comissão -->
-              <a routerLink="/comissao-tecnica" class="block px-4 py-3 text-gray-300 hover:bg-[#161820]">
-                👨‍🏫 Comissão Técnica
-              </a>
-
-              <!-- Relatórios -->
-              <a routerLink="/relatorios" class="block px-4 py-3 text-gray-300 hover:bg-[#161820]">
-                📑 Relatórios
-              </a>
-
-              <!-- Patrocínios -->
-              <a routerLink="/patrocinios" class="block px-4 py-3 text-gray-300 hover:bg-[#161820]">
-                🤝 Patrocínios
-              </a>
-
-            </div>
           </div>
         </div>
-
-        <div class="hidden md:flex items-center gap-2">
-          <button class="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-[#161820] rounded-lg transition">
-            Entrar
-          </button>
-
-          <button
-            class="px-5 py-2 text-sm font-semibold bg-green-500 text-black rounded-lg hover:bg-green-600 transition">
-            Cadastrar
-          </button>
-        </div>
       </div>
+
+      <div class="hidden md:flex items-center gap-2">
+
+        <button
+          class="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-[#161820] rounded-lg transition"
+        >
+          Entrar
+        </button>
+
+        <button
+          class="px-5 py-2 text-sm font-semibold bg-green-500 text-black rounded-lg hover:bg-green-600 transition"
+        >
+          Criar Conta
+        </button>
+
+      </div>
+
     </div>
+  </div>
 </nav>
