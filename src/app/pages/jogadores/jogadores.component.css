@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
-/* Estilos específicos para a página de jogadores */
 
-/* Scroll horizontal suave */
 ::-webkit-scrollbar {
   height: 8px;
 }
@@ -35,4 +31,3 @@ tbody tr:hover {
     -webkit-overflow-scrolling: touch;
   }
 }
->>>>>>> d48a1f3acab03350f4620561a7ec7e46d9e1556c

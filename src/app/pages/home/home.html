@@ -1,67 +1,287 @@
-<section class="relative overflow-hidden pt-32 pb-20">
-  <!-- Grid Background -->
+<!-- HERO -->
+<section
+  class="relative min-h-[75vh] flex items-center overflow-hidden bg-[#030609]">
+
+  <!-- Grid -->
   <div
-    class="absolute inset-0 opacity-10 pointer-events-none
-           bg-[linear-gradient(rgba(34,197,94,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.4)_1px,transparent_1px)]
-           bg-[size:60px_60px]">
+    class="absolute inset-0 opacity-[0.02] pointer-events-none
+           bg-[linear-gradient(rgba(34,197,94,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.35)_1px,transparent_1px)]
+           bg-[size:80px_80px]">
   </div>
 
-  <div class="max-w-7xl mx-auto px-5 relative">
-    <div class="max-w-4xl mx-auto text-center">
+  <!-- Glow -->
+  <div
+    class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.06),transparent_55%)]">
+  </div>
+
+  <div class="max-w-7xl mx-auto px-5 relative z-10 w-full">
+
+    <div class="max-w-5xl mx-auto text-center">
 
       <!-- Badge -->
       <div
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-full
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full
                border border-green-500/30 bg-green-500/10
-               text-green-500 text-sm font-medium mb-8">
+               text-green-500 text-sm font-medium mb-10">
 
-        <svg width="14" height="14" viewBox="0 0 24 24"
-          fill="none" stroke="currentColor" stroke-width="2">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-        </svg>
+        ⚡ A comunidade FIFA mais completa do Brasil
 
-        A comunidade FIFA mais completa do Brasil
       </div>
 
       <!-- Logo -->
-      <div class="flex items-center justify-center gap-4 mb-6">
+      <div
+        class="flex flex-col md:flex-row items-center justify-center gap-5 mb-8">
 
         <img
           src="https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/logo-futnerds_8f14a724.png"
           alt="FUTNERDS"
-          class="w-20 h-20 object-contain">
+          class="w-28 h-28 md:w-32 md:h-32 object-contain">
 
         <h1
-          class="text-5xl md:text-7xl font-black tracking-tight text-white">
-          FUT<span class="text-green-500">NERDS</span>
+          class="text-6xl md:text-8xl font-black tracking-tight leading-none">
+
+          <span class="text-white">FUT</span>
+          <span class="text-green-500">NERDS</span>
+
         </h1>
 
       </div>
 
-      <p class="text-xl md:text-2xl text-gray-400 font-light">
+      <p class="text-2xl md:text-3xl text-gray-400">
         Análises e estratégias para
       </p>
 
-      <p class="text-xl md:text-2xl text-white font-semibold mt-2 mb-10">
+      <p
+        class="text-3xl md:text-4xl font-bold text-white mt-3 mb-12">
         elevar seu jogo ao próximo nível
       </p>
 
+      <!-- CTA -->
       <a
         routerLink="/jogadores"
-        class="inline-flex items-center gap-2 px-8 py-4
-               bg-green-500 text-black font-semibold
-               rounded-xl hover:bg-green-600 transition">
+        class="inline-flex items-center gap-3
+               px-10 py-5
+               bg-green-500
+               text-black
+               font-bold
+               rounded-2xl
+               hover:bg-green-400
+               hover:scale-105
+               transition-all duration-300
+               shadow-[0_0_30px_rgba(34,197,94,0.25)]">
 
-        Ver Jogadores
-
-        <svg width="20" height="20" viewBox="0 0 24 24"
-          fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="5" y1="12" x2="19" y2="12"/>
-          <polyline points="12 5 19 12 12 19"/>
-        </svg>
+        Ver Jogadores →
 
       </a>
 
+      <!-- Stats -->
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
+
+        <div
+          class="bg-[#0d1117]/70 backdrop-blur-sm
+                 border border-[#1e2130]
+                 rounded-xl p-5">
+
+          <div class="text-3xl font-black text-green-500">
+            657+
+          </div>
+
+          <div class="text-sm text-gray-400">
+            Jogadores
+          </div>
+
+        </div>
+
+        <div
+          class="bg-[#0d1117]/70 backdrop-blur-sm
+                 border border-[#1e2130]
+                 rounded-xl p-5">
+
+          <div class="text-3xl font-black text-green-500">
+            100+
+          </div>
+
+          <div class="text-sm text-gray-400">
+            Clubes
+          </div>
+
+        </div>
+
+        <div
+          class="bg-[#0d1117]/70 backdrop-blur-sm
+                 border border-[#1e2130]
+                 rounded-xl p-5">
+
+          <div class="text-3xl font-black text-green-500">
+            FUT
+          </div>
+
+          <div class="text-sm text-gray-400">
+            Estratégias
+          </div>
+
+        </div>
+
+        <div
+          class="bg-[#0d1117]/70 backdrop-blur-sm
+                 border border-[#1e2130]
+                 rounded-xl p-5">
+
+          <div class="text-3xl font-black text-green-500">
+            24/7
+          </div>
+
+          <div class="text-sm text-gray-400">
+            Atualizações
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FEATURES -->
+<section class="py-24 bg-[#030609]">
+
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center mb-16">
+
+      <h2
+        class="text-4xl md:text-5xl font-black text-white mb-4">
+
+        Tudo que você precisa
+
+      </h2>
+
+      <p class="text-gray-400 text-lg">
+        Uma plataforma completa para a comunidade FIFA
+      </p>
+
+    </div>
+
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+      <!-- Card -->
+      <div
+        class="bg-[#0d1117]
+               border border-[#1e2130]
+               rounded-2xl p-6
+               hover:border-green-500/30
+               hover:-translate-y-1
+               transition">
+
+        <div
+          class="w-14 h-14 rounded-xl
+                 bg-green-500/10
+                 flex items-center justify-center
+                 text-green-500 text-2xl mb-4">
+
+          📊
+
+        </div>
+
+        <h3 class="text-xl font-bold text-white mb-3">
+          Análise de Jogadores
+        </h3>
+
+        <p class="text-gray-400">
+          Estatísticas detalhadas e comparações para montar o time perfeito.
+        </p>
+
+      </div>
+
+      <!-- Card -->
+      <div
+        class="bg-[#0d1117]
+               border border-[#1e2130]
+               rounded-2xl p-6
+               hover:border-orange-500/30
+               hover:-translate-y-1
+               transition">
+
+        <div
+          class="w-14 h-14 rounded-xl
+                 bg-orange-500/10
+                 flex items-center justify-center
+                 text-orange-400 text-2xl mb-4">
+
+          🏆
+
+        </div>
+
+        <h3 class="text-xl font-bold text-white mb-3">
+          Estratégias FUT
+        </h3>
+
+        <p class="text-gray-400">
+          Guias e dicas para dominar o modo carreira e Ultimate Team.
+        </p>
+
+      </div>
+
+      <!-- Card -->
+      <div
+        class="bg-[#0d1117]
+               border border-[#1e2130]
+               rounded-2xl p-6
+               hover:border-blue-500/30
+               hover:-translate-y-1
+               transition">
+
+        <div
+          class="w-14 h-14 rounded-xl
+                 bg-blue-500/10
+                 flex items-center justify-center
+                 text-blue-400 text-2xl mb-4">
+
+          👥
+
+        </div>
+
+        <h3 class="text-xl font-bold text-white mb-3">
+          Comunidade Ativa
+        </h3>
+
+        <p class="text-gray-400">
+          Compartilhe táticas, elencos e conquistas com outros jogadores.
+        </p>
+
+      </div>
+
+      <!-- Card -->
+      <div
+        class="bg-[#0d1117]
+               border border-[#1e2130]
+               rounded-2xl p-6
+               hover:border-yellow-500/30
+               hover:-translate-y-1
+               transition">
+
+        <div
+          class="w-14 h-14 rounded-xl
+                 bg-yellow-500/10
+                 flex items-center justify-center
+                 text-yellow-400 text-2xl mb-4">
+
+          ⚡
+
+        </div>
+
+        <h3 class="text-xl font-bold text-white mb-3">
+          Atualizações Constantes
+        </h3>
+
+        <p class="text-gray-400">
+          Dados atualizados para acompanhar cada temporada.
+        </p>
+      </div>
     </div>
   </div>
 </section>
