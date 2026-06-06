@@ -79,7 +79,7 @@ export class JogadoresComponent {
     }
   ];
 
-  formatarMoeda(valor: number): string {
+  formatarMoeda(valor: number ): string {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
       currency: 'BRL'

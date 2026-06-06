@@ -1,88 +1,35 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+/* Estilos específicos para a página de jogadores */
 
-interface Jogador {
-  id: number;
-  foto: string;
-  nome: string;
-  idade: number;
-  posicao: string;
-  timeAtual: string;
-  salario: number;
-  valor: number;
-  multa: number;
+/* Scroll horizontal suave */
+::-webkit-scrollbar {
+  height: 8px;
 }
 
-@Component({
-  selector: 'app-jogadores',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './jogadores.component.html',
-  styleUrl: './jogadores.component.css'
-})
-export class JogadoresComponent {
-  jogadores: Jogador[] = [
-    {
-      id: 1,
-      foto: 'https://via.placeholder.com/50',
-      nome: 'Neymar',
-      idade: 32,
-      posicao: 'Ponta',
-      timeAtual: 'PSG',
-      salario: 500000,
-      valor: 50000000,
-      multa: 10000000
-    },
-    {
-      id: 2,
-      foto: 'https://via.placeholder.com/50',
-      nome: 'Vinicius Jr',
-      idade: 24,
-      posicao: 'Ponta',
-      timeAtual: 'Real Madrid',
-      salario: 400000,
-      valor: 80000000,
-      multa: 15000000
-    },
-    {
-      id: 3,
-      foto: 'https://via.placeholder.com/50',
-      nome: 'Rodrygo',
-      idade: 23,
-      posicao: 'Ponta',
-      timeAtual: 'Real Madrid',
-      salario: 300000,
-      valor: 60000000,
-      multa: 12000000
-    },
-    {
-      id: 4,
-      foto: 'https://via.placeholder.com/50',
-      nome: 'Mbappé',
-      idade: 25,
-      posicao: 'Ponta',
-      timeAtual: 'Real Madrid',
-      salario: 600000,
-      valor: 120000000,
-      multa: 25000000
-    },
-    {
-      id: 5,
-      foto: 'https://via.placeholder.com/50',
-      nome: 'Haaland',
-      idade: 24,
-      posicao: 'Atacante',
-      timeAtual: 'Manchester City',
-      salario: 550000,
-      valor: 100000000,
-      multa: 20000000
-    }
-  ];
+::-webkit-scrollbar-track {
+  background: #0a0b0f;
+}
 
-  formatarMoeda(valor: number): string {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(valor);
+::-webkit-scrollbar-thumb {
+  background: #1e2130;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2d3a;
+}
+
+/* Animação de hover na linha */
+tbody tr {
+  transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: rgba(22, 24, 32, 0.5);
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
   }
 }
