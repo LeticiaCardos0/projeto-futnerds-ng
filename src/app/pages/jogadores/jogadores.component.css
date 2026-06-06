@@ -1,0 +1,38 @@
+<<<<<<< HEAD
+=======
+/* Estilos específicos para a página de jogadores */
+
+/* Scroll horizontal suave */
+::-webkit-scrollbar {
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0b0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e2130;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2d3a;
+}
+
+/* Animação de hover na linha */
+tbody tr {
+  transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: rgba(22, 24, 32, 0.5);
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+>>>>>>> d48a1f3acab03350f4620561a7ec7e46d9e1556c
