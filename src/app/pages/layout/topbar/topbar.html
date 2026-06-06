@@ -18,20 +18,12 @@
       <!-- Menu -->
       <div class="hidden md:flex items-center gap-1">
 
-        <a
-          routerLink="/jogadores"
+        <button
+          (click)="rotaJogador()"
           class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition"
         >
           Jogadores
-        </a>
-
-        <a
-          routerLink="/times"
-          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition"
-        >
-          Clubes
-        </a>
-
+        </button>
         <a
           routerLink="/elenco"
           class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition"

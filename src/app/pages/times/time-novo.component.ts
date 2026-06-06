@@ -14,8 +14,8 @@ interface Time {
   selector: 'app-times',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './times.component.html',
-  styleUrl: './times.component.css'
+  templateUrl: './time-novo.component.html',
+  styleUrl: './time-novo.component.css'
 })
 export class TimesComponent {
   times: Time[] = [
