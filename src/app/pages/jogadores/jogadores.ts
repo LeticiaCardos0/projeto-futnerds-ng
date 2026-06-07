@@ -18,8 +18,8 @@ interface Jogador {
   selector: 'app-jogadores',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './jogadores.component.html',
-  styleUrl: './jogadores.component.css'
+  templateUrl: './jogadores.html',
+  styleUrl: './jogadores.css'
 })
 export class JogadoresComponent {
   jogadores: Jogador[] = [
