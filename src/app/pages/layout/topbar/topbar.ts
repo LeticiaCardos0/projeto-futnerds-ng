@@ -1,17 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { JogadoresComponent } from '../../jogadores/jogadores.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './topbar.html',
   styleUrl: './topbar.css',
 })
 export class Topbar {
-    constructor( private router: Router){}
-
-    rotaJogador(): void{
-      this.router.navigate(['/jogadores']);
-    }
+   
 }

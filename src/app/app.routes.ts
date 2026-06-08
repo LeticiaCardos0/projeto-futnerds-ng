@@ -1,20 +1,22 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './pages/home/home';
+import { JogadoresComponent } from './pages/jogadores/jogadores';
+import { TimesComponent } from './pages/times/times';
+import { FinanceiroComponent } from './pages/financeiro/financeiro';
+import { TransferenciasComponent } from './pages/financeiro/transferencias/transferencias';
+import { OrcamentoComponent } from './pages/financeiro/orcamento/orcamento';
+import { ComissaoTecnicaComponent } from './pages/financeiro/comissao-tecnica/comissao-tecnica';
+import { RelatoriosComponent } from './pages/financeiro/relatorios/relatorios'
 
 export const routes: Routes = [
-
-  // Home
-  {
-    path: 'elenco',
-    loadComponent: () =>
-      import('./pages/times/time-novo.component')
-        .then(m => m.TimesComponent)
-  },
-
-  // Jogadores
-  {
-    path: 'jogadores',
-    loadComponent: () =>
-      import('./pages/jogadores/jogadores.component')
-        .then(m => m.JogadoresComponent)
-  }
-]
+  { path: '', component: HomeComponent },
+  { path: 'jogadores', component: JogadoresComponent },
+  { path: 'times', component: TimesComponent },
+  { path: 'financeiro', component: FinanceiroComponent },
+  { path: 'transferencias', component: TransferenciasComponent },
+  { path: 'orcamento', component: OrcamentoComponent },
+  { path: 'comissao-tecnica', component: ComissaoTecnicaComponent },
+  { path: 'financeiro', component: FinanceiroComponent },
+  { path: 'relatorios', component: RelatoriosComponent },
+  { path: '**', redirectTo: '' }
+];

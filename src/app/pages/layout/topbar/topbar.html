@@ -18,14 +18,14 @@
       <!-- Menu -->
       <div class="hidden md:flex items-center gap-1">
 
-        <button
-          (click)="rotaJogador()"
+        <a
+          routerLink="/jogadores"
           class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition"
         >
           Jogadores
-        </button>
+        </a>
         <a
-          routerLink="/elenco"
+          routerLink="/times"
           class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition"
         >
           Elenco
@@ -34,7 +34,7 @@
         <!-- Financeiro -->
         <div class="relative group">
 
-          <button
+          <a
             class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition flex items-center gap-2"
           >
             Financeiro
@@ -53,7 +53,7 @@
                 d="M19 9l-7 7-7-7"
               />
             </svg>
-          </button>
+          </a>
 
           <div
             class="absolute left-0 top-full mt-2 w-72 bg-[#13151c] border border-[#1e2130] rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
@@ -80,14 +80,7 @@
               Comissão Técnica
             </a>
             <a
-              routerLink="/patrocinios"
-              class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white"
-            >
-              Patrocínios
-            </a>
-
-            <a
-              routerLink="/relatorios-financeiros"
+              routerLink="/relatorios"
               class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white rounded-b-xl"
             >
               Relatórios Financeiros

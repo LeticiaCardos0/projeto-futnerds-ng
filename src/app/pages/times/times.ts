@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
 interface Time {
   id: number;
   logo: string;
@@ -14,8 +15,8 @@ interface Time {
   selector: 'app-times',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './time-novo.component.html',
-  styleUrl: './time-novo.component.css'
+  templateUrl: './times.html',
+  styleUrl: './times.css'
 })
 export class TimesComponent {
   times: Time[] = [
