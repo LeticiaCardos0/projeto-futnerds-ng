@@ -23,8 +23,10 @@ import { InputTextModule } from 'primeng/inputtext';
     ],
     templateUrl: './cadastro.html',
     styles: []
+    
 })
 export class CadastroComponent {
+    activeStep = 1;
     // activeStep: number = 1;
     
     // // Dados do formulário
