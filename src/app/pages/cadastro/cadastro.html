@@ -1,284 +1,190 @@
-<div class="min-h-screen bg-[#030609] flex items-center justify-center px-4 py-10">
+<!-- 
+  SOLUÇÃO DEFINITIVA:
+  1. Adicionamos o atributo [linear]="false" para permitir navegação livre se desejar.
+  2. IMPORTANTE: Usamos classes utilitárias para esconder os cabeçalhos padrão do PrimeNG 
+     que estão causando os "fantasmas" na lateral.
+-->
 
+<div class="min-h-screen bg-[#030609] flex items-center justify-center px-4 py-10">
   <div
     class="w-full max-w-5xl rounded-3xl border border-green-500/20 bg-[#0a0b0f] p-6 md:p-10 shadow-[0_0_40px_rgba(34,197,94,0.08)]"
   >
-
+    
+    <!-- Título -->
     <div class="text-center mb-10">
       <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight text-white">
         Crie sua Conta no
         <span class="text-green-500">FUTNERDS</span>
       </h2>
-
       <p class="text-gray-500 mt-2">
         Siga os passos para configurar seu perfil de treinador
       </p>
     </div>
-<p-stepper [(value)]="activeStep" class="bg-transparent">
-  <!-- TIMELINE -->
-  <p-step-list class="mb-10">
 
-    <p-step [value]="1">
-      <ng-template #content let-activateCallback="activateCallback">
-        <button
-          (click)="activateCallback(1)"
-          class="flex flex-col items-center gap-3 cursor-pointer"
-        >
-          <div
-            class="w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-[0_0_15px_rgba(34,197,94,0.4)]"
-          >
-            <i class="pi pi-user text-black text-lg"></i>
-          </div>
-
-          <span
-            class="text-[11px] text-center font-bold uppercase text-white leading-tight"
-          >
-            Dados do<br />
-            Treinador
-          </span>
-        </button>
-      </ng-template>
-    </p-step>
-
-    <p-step [value]="2">
-      <ng-template #content let-activateCallback="activateCallback">
-        <button
-          (click)="activateCallback(2)"
-          class="flex flex-col items-center gap-3 cursor-pointer"
-        >
-          <div
-            class="w-14 h-14 rounded-full bg-[#13151c] border border-white/20 flex items-center justify-center"
-          >
-            <i class="pi pi-star text-gray-400 text-lg"></i>
-          </div>
-
-          <span
-            class="text-[11px] text-center font-bold uppercase text-gray-400 leading-tight"
-          >
-            Seus<br />
-            Interesses
-          </span>
-        </button>
-      </ng-template>
-    </p-step>
-
-    <p-step [value]="3">
-      <ng-template #content let-activateCallback="activateCallback">
-        <button
-          (click)="activateCallback(3)"
-          class="flex flex-col items-center gap-3 cursor-pointer"
-        >
-          <div
-            class="w-14 h-14 rounded-full bg-[#13151c] border border-white/20 flex items-center justify-center"
-          >
-            <i class="pi pi-check text-gray-400 text-lg"></i>
-          </div>
-
-          <span
-            class="text-[11px] text-center font-bold uppercase text-gray-400 leading-tight"
-          >
-            Contratado
-          </span>
-        </button>
-      </ng-template>
-    </p-step>
-
-  </p-step-list>
-
-  <!-- PAINÉIS -->
-  <p-step-panels
-    class="rounded-3xl border border-white/5 bg-[#13151c] p-6 md:p-8 shadow-inner"
-  >
-
-    <!-- PASSO 1 -->
-    <p-step-panel [value]="1">
-      <ng-template #content let-activateCallback="activateCallback">
-
-        <div class="max-w-md mx-auto flex flex-col gap-5">
-
-          <div class="text-center mb-2">
-            <h3
-              class="text-xl font-black text-white uppercase tracking-tighter"
-            >
-              Seus Dados
-            </h3>
-          </div>
-
-          <div class="flex flex-col gap-1.5">
-            <label
-              class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1"
-            >
-              Nome Completo
-            </label>
-
-            <input
-              pInputText
-              placeholder="Ex: Pep Guardiola"
-              class="w-full !bg-[#1a1d26] !border-white/10 !text-white !rounded-xl !p-3.5"
-            />
-          </div>
-
-          <div class="flex flex-col gap-1.5">
-            <label
-              class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1"
-            >
-              E-mail Profissional
-            </label>
-
-            <input
-              pInputText
-              type="email"
-              placeholder="treinador@futnerds.com"
-              class="w-full !bg-[#1a1d26] !border-white/10 !text-white !rounded-xl !p-3.5"
-            />
-          </div>
-
-          <div class="flex flex-col gap-1.5">
-            <label
-              class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1"
-            >
-              Senha de Acesso
-            </label>
-
-            <p-password
-              [toggleMask]="true"
-              [feedback]="false"
-              placeholder="••••••••"
-              class="w-full"
-              inputStyleClass="w-full !bg-[#1a1d26] !border-white/10 !text-white !rounded-xl !p-3.5"
-            />
-          </div>
-
-          <div class="pt-4 flex justify-end">
-            <button
-              (click)="activateCallback(2)"
-              class="inline-flex items-center gap-2 rounded-xl bg-green-500 px-8 py-3 font-black text-black hover:bg-green-400 text-xs uppercase tracking-widest"
-            >
-              PRÓXIMO PASSO
-              <i class="pi pi-arrow-right"></i>
-            </button>
-          </div>
-
+    <p-stepper [(value)]="activeStep" [linear]="false" class="bg-transparent custom-stepper">
+      
+      <!-- SUA TIMELINE PERSONALIZADA -->
+      <div class="relative mb-16 px-[10%]">
+        
+        <!-- Linha de Fundo -->
+        <div class="absolute top-7 left-[12%] right-[12%] h-[2px] bg-white/10">
+          <!-- Progresso Verde Dinâmico -->
+          <div 
+            class="h-full bg-green-500 transition-all duration-500 shadow-[0_0_15px_rgba(34,197,94,0.6)]"
+            [style.width]="activeStep === 1 ? '0%' : activeStep === 2 ? '50%' : '100%'"
+          ></div>
         </div>
 
-      </ng-template>
-    </p-step-panel>
-
-    <!-- PASSO 2 -->
-    <p-step-panel [value]="2">
-      <ng-template #content let-activateCallback="activateCallback">
-
-        <div class="max-w-lg mx-auto flex flex-col gap-6">
-
-          <div class="text-center mb-2">
-            <h3
-              class="text-xl font-black text-white uppercase tracking-tighter"
-            >
-              Seus Interesses
-            </h3>
-
-            <p
-              class="text-xs text-gray-500 mt-1 uppercase font-bold tracking-widest"
-            >
-              Configure sua identidade
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-2 gap-4">
-
-            <div class="flex flex-col gap-1.5">
-              <label
-                class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1"
+        <div class="relative flex items-center justify-between">
+          
+          <!-- PASSO 1 -->
+          <div class="flex flex-col items-center z-10">
+            <button (click)="activeStep = 1" class="flex flex-col items-center focus:outline-none">
+              <div
+                class="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 border-2"
+                [ngClass]="{
+                  'bg-green-500 border-green-500 shadow-[0_0_20px_rgba(34,197,94,.4)]': activeStep >= 1,
+                  'bg-[#151923] border-white/10': activeStep < 1
+                }"
               >
-                Seu Apelido (Nick)
-              </label>
+                <i class="pi pi-user text-xl" [class.text-black]="activeStep >= 1" [class.text-gray-500]="activeStep < 1"></i>
+              </div>
+              <span class="mt-3 text-[10px] font-black uppercase tracking-widest" [class.text-green-500]="activeStep >= 1" [class.text-gray-500]="activeStep < 1">
+                Dados
+              </span>
+            </button>
+          </div>
 
-              <input
-                pInputText
-                placeholder="Ex: Coringa"
-                class="w-full !bg-[#1a1d26] !border-white/10 !text-white !rounded-xl !p-3.5"
-              />
-            </div>
-
-            <div class="flex flex-col gap-1.5">
-              <label
-                class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1"
+          <!-- PASSO 2 -->
+          <div class="flex flex-col items-center z-10">
+            <button (click)="activeStep = 2" class="flex flex-col items-center focus:outline-none">
+              <div
+                class="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 border-2"
+                [ngClass]="{
+                  'bg-green-500 border-green-500 shadow-[0_0_20px_rgba(34,197,94,.4)]': activeStep >= 2,
+                  'bg-[#151923] border-white/10': activeStep < 2
+                }"
               >
-                Time do Coração
-              </label>
+                <i class="pi pi-star text-xl" [class.text-black]="activeStep >= 2" [class.text-gray-500]="activeStep < 2"></i>
+              </div>
+              <span class="mt-3 text-[10px] font-black uppercase tracking-widest" [class.text-green-500]="activeStep >= 2" [class.text-gray-500]="activeStep < 2">
+                Interesses
+              </span>
+            </button>
+          </div>
 
-              <input
-                pInputText
-                placeholder="Ex: Corinthians"
-                class="w-full !bg-[#1a1d26] !border-white/10 !text-white !rounded-xl !p-3.5"
-              />
+          <!-- PASSO 3 -->
+          <div class="flex flex-col items-center z-10">
+            <button (click)="activeStep = 3" class="flex flex-col items-center focus:outline-none">
+              <div
+                class="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 border-2"
+                [ngClass]="{
+                  'bg-green-500 border-green-500 shadow-[0_0_20px_rgba(34,197,94,.4)]': activeStep >= 3,
+                  'bg-[#151923] border-white/10': activeStep < 3
+                }"
+              >
+                <i class="pi pi-check text-xl" [class.text-black]="activeStep >= 3" [class.text-gray-500]="activeStep < 3"></i>
+              </div>
+              <span class="mt-3 text-[10px] font-black uppercase tracking-widest" [class.text-green-500]="activeStep >= 3" [class.text-gray-500]="activeStep < 3">
+                Finalizado
+              </span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <style>
+        ::ng-deep .custom-stepper .p-stepper-nav {
+          display: none !important;
+        }
+        ::ng-deep .p-stepper-panels {
+          background: transparent !important;
+          border: none !important;
+          padding: 0 !important;
+        }
+      </style>
+
+      <!-- PAINÉIS DE CONTEÚDO -->
+      <p-step-panels class="mx-auto max-w-4xl rounded-3xl border border-white/5 bg-[#0d0f14] p-8 shadow-2xl">
+        
+        <p-step-panel [value]="1">
+          <ng-template #content let-activateCallback="activateCallback">
+            <div class="max-w-md mx-auto flex flex-col gap-6 py-4">
+              <h3 class="text-center text-xl font-black text-white uppercase">Seus Dados</h3>
+              
+              <div class="flex flex-col gap-2">
+                <label class="text-[10px] font-bold uppercase text-gray-500 ml-1">Nome Completo</label>
+                <input pInputText placeholder="Ex: Pep Guardiola" class="w-full !bg-[#1a1d26] !border-white/5 !text-white !rounded-xl !p-4" />
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <label class="text-[10px] font-bold uppercase text-gray-500 ml-1">E-mail Profissional</label>
+                <input pInputText type="email" placeholder="treinador@futnerds.com" class="w-full !bg-[#1a1d26] !border-white/5 !text-white !rounded-xl !p-4" />
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <label class="text-[10px] font-bold uppercase text-gray-500 ml-1">Senha</label>
+                <p-password [toggleMask]="true" [feedback]="false" placeholder="••••••••" class="w-full" inputStyleClass="w-full !bg-[#1a1d26] !border-white/5 !text-white !rounded-xl !p-4" />
+              </div>
+
+              <div class="pt-4 flex justify-end">
+                <button (click)="activateCallback(2)" class="bg-green-500 px-10 py-4 rounded-xl font-black text-black text-xs uppercase tracking-widest hover:bg-green-400 transition-colors">
+                  Próximo Passo →
+                </button>
+              </div>
             </div>
+          </ng-template>
+        </p-step-panel>
 
-          </div>
+        <p-step-panel [value]="2">
+          <ng-template #content let-activateCallback="activateCallback">
+            <div class="max-w-lg mx-auto flex flex-col gap-6 py-4">
+              <div class="text-center">
+                <h3 class="text-xl font-black text-white uppercase">Interesses</h3>
+                <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest mt-1">Configure sua identidade</p>
+              </div>
 
-          <div class="flex justify-between pt-4">
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="flex flex-col gap-2">
+                  <label class="text-[10px] font-bold uppercase text-gray-500 ml-1">Apelido (Nick)</label>
+                  <input pInputText placeholder="Ex: Coringa" class="w-full !bg-[#1a1d26] !border-white/5 !text-white !rounded-xl !p-4" />
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label class="text-[10px] font-bold uppercase text-gray-500 ml-1">Time do Coração</label>
+                  <input pInputText placeholder="Ex: Corinthians" class="w-full !bg-[#1a1d26] !border-white/5 !text-white !rounded-xl !p-4" />
+                </div>
+              </div>
 
-            <button
-              (click)="activateCallback(1)"
-              class="text-gray-400 text-xs font-bold uppercase"
-            >
-              ← Voltar
-            </button>
+              <div class="flex justify-between pt-6 items-center">
+                <button (click)="activateCallback(1)" class="text-gray-500 text-[10px] font-black uppercase tracking-widest hover:text-white transition-colors">
+                  ← Voltar
+                </button>
+                <button (click)="activateCallback(3)" class="bg-green-500 px-10 py-4 rounded-xl font-black text-black text-xs uppercase tracking-widest hover:bg-green-400 transition-colors">
+                  Finalizar ✓
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </p-step-panel>
 
-            <button
-              (click)="activateCallback(3)"
-              class="inline-flex items-center gap-2 rounded-xl bg-green-500 px-8 py-3 font-black text-black hover:bg-green-400 text-xs uppercase tracking-widest"
-            >
-              Finalizar
-              <i class="pi pi-check"></i>
-            </button>
+        <p-step-panel [value]="3">
+          <ng-template #content>
+            <div class="flex flex-col items-center gap-8 py-12">
+              <div class="h-24 w-24 rounded-full border-2 border-green-500/20 bg-green-500/10 flex items-center justify-center shadow-[0_0_30px_rgba(34,197,94,0.1)]">
+                <i class="pi pi-check text-5xl text-green-500"></i>
+              </div>
+              <div class="text-center">
+                <h3 class="text-4xl font-black text-white uppercase tracking-tighter">CONTRATADO!</h3>
+                <p class="text-gray-500 mt-3 max-w-xs mx-auto">Seu perfil foi criado. O vestiário já está à sua espera, treinador.</p>
+              </div>
+              <button routerLink="/" class="bg-green-500 px-12 py-5 rounded-2xl font-black text-black uppercase tracking-widest text-sm hover:bg-green-400 transition-all shadow-lg">
+                Ir para o Painel
+              </button>
+            </div>
+          </ng-template>
+        </p-step-panel>
 
-          </div>
-
-        </div>
-
-      </ng-template>
-    </p-step-panel>
-
-    <!-- PASSO 3 -->
-    <p-step-panel [value]="3">
-      <ng-template #content>
-
-        <div class="flex flex-col items-center gap-8 py-10">
-
-          <div
-            class="flex h-24 w-24 items-center justify-center rounded-full border-2 border-green-500/30 bg-green-500/10"
-          >
-            <i class="pi pi-check text-5xl text-green-500"></i>
-          </div>
-
-          <div class="text-center">
-
-            <h3
-              class="text-4xl font-black text-white uppercase tracking-tighter"
-            >
-              CONTRATADO!
-            </h3>
-
-            <p class="text-gray-500 mt-3">
-              Seu perfil foi criado com sucesso. O vestiário já está à sua
-              espera, treinador.
-            </p>
-
-          </div>
-
-          <button
-            routerLink="/"
-            class="rounded-2xl bg-green-500 px-10 py-4 font-black text-black hover:bg-green-400 uppercase tracking-widest text-sm"
-          >
-            IR PARA O PAINEL
-          </button>
-
-        </div>
-
-      </ng-template>
-    </p-step-panel>
-
-  </p-step-panels>
-
-</p-stepper>
+      </p-step-panels>
+    </p-stepper>
+  </div>
+</div>
