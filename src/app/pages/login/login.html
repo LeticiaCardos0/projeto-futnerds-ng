@@ -9,8 +9,8 @@
           <p class="text-gray-500 text-sm font-medium">Inicie sua jornada com o FutNerds</p>
         </div>
     
-        <!-- Form -->
-        <form class="flex flex-col gap-5">
+        <!-- div -->
+        <div class="flex flex-col gap-5">
     
           <!-- E-mail -->
           <div class="flex flex-col gap-2">
@@ -50,11 +50,11 @@
           <div class="flex flex-col gap-3 mt-1">
             <div class="flex items-center gap-2">
               <span class="text-gray-600 text-xs font-medium">Não tem conta?</span>
-              <a href="cadastro.html" class="text-[11px] font-black uppercase tracking-widest text-green-500 hover:text-green-400 transition-colors">
+              <a routerLink="/cadastro" class="text-[11px] font-black uppercase tracking-widest text-green-500 hover:text-green-400 transition-colors">
                 Crie sua conta
               </a>
             </div>
-            <a href="#" class="text-[10px] font-black uppercase tracking-widest text-gray-700 hover:text-green-500 transition-colors">
+            <a routerLink="/cadastro" class="text-[10px] font-black uppercase tracking-widest text-gray-700 hover:text-green-500 transition-colors">
               Esqueceu seu usuário ou senha?
             </a>
           </div>
@@ -63,14 +63,13 @@
           <div class="flex justify-end mt-2">
             <button
               routerLink="/"
-              type="submit"
               class="bg-green-500 hover:bg-green-400 active:scale-[0.98] hover:scale-[1.02] text-black font-black uppercase tracking-widest text-xs px-10 py-4 rounded-xl transition-all"
             >
               Acessar meu Painel →
             </button>
           </div>
     
-        </form>
+        </div>
     
         <!-- Footer -->
         <div class="mt-10 pt-6 border-t border-white/5 text-center">

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrcamentoComponent } from './orcamento';
+import { OrcamentoComponent } from './orcamentos';
 
 describe('OrcamentoComponent', () => {
   let component: OrcamentoComponent;
