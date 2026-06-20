@@ -1,17 +1,27 @@
-import { Routes } from '@angular/router';
+import { FinanceiroComponent } from './pages/financeiro/financeiro';
+import { TransferenciasComponent } from './pages/financeiro/transferencias/transferencias';
+import { OrcamentoComponent } from './pages/financeiro/orcamento/orcamento';
+import { ComissaoTecnicaComponent } from './pages/financeiro/comissao-tecnica/comissao-tecnica';
+import { RelatoriosComponent } from './pages/financeiro/relatorios/relatorios'
+import { CadastroComponent } from './pages/cadastro/cadastro';
 import { HomeComponent } from './pages/home/home';
 import { JogadoresComponent } from './pages/jogadores/jogadores';
 import { TimesComponent } from './pages/times/times';
+import { Routes } from '@angular/router';
+import { LoginComponent } from './pages/login/login';
+import { TransacoesComponent } from './pages/transacoes/transacoes';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'cadastro', component: CadastroComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'jogadores', component: JogadoresComponent },
   { path: 'times', component: TimesComponent },
-
-  // { path: 'elenco', loadComponent: () => import('./pages/elenco/elenco').then(x => x.ElencoComponent) },
-  // { path: 'transferencias', loadComponent: () => import('./pages/financeiro/transferencias/transferencias').then(x => x.TransferenciasComponent) },
-  // { path: 'orcamento', loadComponent: () => import('./pages/financeiro/orcamento/orcamento').then(x => x.OrcamentoComponent) },
-  // { path: 'comissao-tecnica', loadComponent: () => import('./pages/financeiro/comissao-tecnica/comissao-tecnica').then(x => x.ComissaoTecnicaComponent) },
-  // { path: 'patrocinios', loadComponent: () => import('./pages/financeiro/patrocinios/patrocinios').then(x => x.PatrociniosComponent) },
-  // { path: 'relatorios-financeiros', loadComponent: () => import('./pages/financeiro/relatorios-financeiros/relatorios-financeiros').then(x => x.RelatoriosFinanceirosComponent) },
+  { path: 'financeiro', component: FinanceiroComponent },
+  { path: 'transacoes', component: TransacoesComponent },
+  { path: 'orcamento', component: OrcamentoComponent },
+  { path: 'comissao-tecnica', component: ComissaoTecnicaComponent },
+  { path: 'financeiro', component: FinanceiroComponent },
+  { path: 'relatorios', component: RelatoriosComponent },
+  { path: '**', redirectTo: '' }
 ];

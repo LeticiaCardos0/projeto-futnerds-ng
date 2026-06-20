@@ -41,9 +41,9 @@
           <div
             class="absolute left-0 top-full mt-2 w-72 bg-[#13151c] border border-[#1e2130] rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
 
-            <a routerLink="/transferencias"
+            <a routerLink="/transacoes"
               class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white rounded-t-xl">
-              Transferências
+              Transações
             </a>
 
             <a routerLink="/orcamento" class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white">
@@ -68,12 +68,11 @@
 
       <div class="hidden md:flex items-center gap-2">
 
-        <button class="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-[#161820] rounded-lg transition">
+        <button routerLink="/login"
+         class="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-[#161820] rounded-lg transition">
           Entrar
         </button>
-
-        <button
-          routerLink="cadastro"
+        <button routerLink="/cadastro"
           class="px-5 py-2 text-sm font-semibold bg-green-500 text-black rounded-lg hover:bg-green-600 transition">
           Criar Conta
         </button>
