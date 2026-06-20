@@ -17,7 +17,7 @@ interface Jogador {
 @Component({
   selector: 'app-jogadores',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './jogadores.html',
   styleUrl: './jogadores.css'
 })
