@@ -1,179 +1,176 @@
 <!-- MAIN -->
-<main class="flex-1 overflow-auto bg-[#030609] text-white">
-
-  <!-- HEADER -->
-  <header class="border-b border-white/5 px-8 py-6 bg-[#0a0b0f]">
-    <div class="flex justify-between items-center">
-      <div>
-        <h2 class="text-3xl font-black uppercase tracking-tighter">
-          Gerenciamento de <span class="text-green-500">Orçamento</span>
-        </h2>
-        <p class="text-gray-500 mt-1 text-sm font-medium">
-          Visualize e controle o orçamento do seu time por categoria
-        </p>
-      </div>
-
-      <button
-        (click)="openCategoryModal()"
-        class="bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98]
-               text-black font-black uppercase tracking-widest text-xs px-6 py-3
-               rounded-xl transition-all flex items-center gap-2">
-        <i class="fas fa-plus"></i>
-        <span>Adicionar Categoria</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- OVERVIEW -->
-  <div class="border-b border-white/5 px-8 py-6">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <!-- TOTAL -->
-      <div class="bg-[#0a0b0f] rounded-2xl p-6 border border-white/5">
-        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest">Orçamento Total</h3>
-        <p class="text-4xl font-black text-white mt-3">$500,000,000</p>
-        <p class="text-gray-500 text-xs mt-2">Orçamento anual alocado</p>
-      </div>
-
-      <!-- USED -->
-      <div class="bg-[#0a0b0f] rounded-2xl p-6 border border-white/5">
-        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest">Orçamento Utilizado</h3>
-        <p class="text-4xl font-black text-red-400 mt-3">$285,000,000</p>
-        <p class="text-gray-500 text-xs mt-2">57% do orçamento total</p>
-      </div>
-
-      <!-- AVAILABLE -->
-      <div class="bg-[#0a0b0f] rounded-2xl p-6 border border-white/5">
-        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest">Orçamento Disponível</h3>
-        <p class="text-4xl font-black text-green-500 mt-3">$215,000,000</p>
-        <p class="text-gray-500 text-xs mt-2">43% disponível</p>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- FILTER -->
-  <div class="px-8 py-6 border-b border-white/5">
-    <div class="max-w-md">
-      <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">
-        Filtrar por Tipo
-      </label>
-
-      <select
-        class="w-full mt-2 bg-[#0a0b0f] border border-white/5 rounded-xl px-4 py-3 text-sm text-white
-               focus:border-green-500/50 outline-none transition">
-        <option>Todas as Categorias</option>
-        <option>Despesas</option>
-        <option>Receitas</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- CATEGORIES -->
-  <div class="p-8 space-y-6">
-
-    <!-- CARD -->
-    <div class="bg-[#0a0b0f] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition">
-
-      <div class="flex justify-between items-start mb-6">
+<main class="flex-1 bg-[#030609] text-white pt-32 pb-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- HEADER -->
+    <header class="pb-6 border-b border-white/10">
+      <div class="flex justify-between items-center">
         <div>
-          <h3 class="text-xl font-black flex items-center gap-2">
-            <i class="fas fa-users text-purple-500"></i>
-            Salários
-          </h3>
-          <p class="text-gray-500 text-sm mt-1">
-            Despesa - Folha de pagamento dos jogadores
+          <h2 class="text-3xl font-black uppercase tracking-tighter">
+            Gerenciamento de <span class="text-green-500">Orçamento</span>
+          </h2>
+          <p class="text-gray-500 mt-1 text-sm font-medium"> Visualize e controle o orçamento do seu time por
+            categoria
           </p>
         </div>
 
-        <div class="flex gap-3 text-sm">
-          <button class="text-yellow-400 hover:text-yellow-300 transition">
-            <i class="fas fa-edit"></i>
-          </button>
-          <button class="text-red-400 hover:text-red-300 transition">
-            <i class="fas fa-trash"></i>
-          </button>
-        </div>
+        <button (click)="abrirModal()"
+          class="bg-green-500
+hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all flex items-center gap-2">
+          <i class="fas fa-plus"></i>
+          <span>Adicionar Categoria</span>
+        </button>
       </div>
+    </header>
 
-      <!-- VALUES -->
-      <div class="grid grid-cols-3 gap-4 mb-4">
-        <div>
-          <p class="text-gray-500 text-xs uppercase font-bold">Alocado</p>
-          <p class="text-lg font-black text-white">$120,000,000</p>
+    <!-- OVERVIEW -->
+    <div class="py-8 border-b border-white/10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <div class="bg-[#05070c] rounded-3xl border border-white/10 p-5">
+          <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">
+            Orçamento Total
+          </p>
+          <p class="text-2xl font-black text-white mt-2 tracking-tight">$500,000,000</p>
+          <p class="text-gray-500 text-xs mt-2">Orçamento anual alocado</p>
         </div>
 
-        <div>
-          <p class="text-gray-500 text-xs uppercase font-bold">Gasto</p>
-          <p class="text-lg font-black text-red-400">$85,000,000</p>
+        <div class="bg-[#05070c] rounded-3xl border border-white/10 p-5">
+          <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">
+            Orçamento Utilizado
+          </p>
+          <p class="text-2xl font-black text-red-400 mt-2 tracking-tight">$285,000,000</p>
+          <p class="text-gray-500 text-xs mt-2">57% do orçamento total</p>
         </div>
 
-        <div>
-          <p class="text-gray-500 text-xs uppercase font-bold">Disponível</p>
-          <p class="text-lg font-black text-green-500">$35,000,000</p>
+        <div class="bg-[#05070c] rounded-3xl border border-white/10 p-5">
+          <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">
+            Orçamento Disponível
+          </p>
+          <p class="text-2xl font-black text-green-500 mt-2 tracking-tight">$215,000,000</p>
+          <p class="text-gray-500 text-xs mt-2">43% disponível</p>
         </div>
+
       </div>
-
-      <!-- PROGRESS -->
-      <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
-        <div class="h-full bg-gradient-to-r from-purple-500 to-purple-600 w-[70.8%]"></div>
-      </div>
-
-      <p class="text-xs text-gray-500 mt-2">70.8% utilizado</p>
     </div>
 
-  </div>
+    <!-- FILTER -->
+    <div class="py-8 border-b border-white/10">
+      <div class="max-w-md">
+        <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+          Filtrar por Tipo
+        </label>
 
+        <select class="w-full mt-2 bg-[#0a0b0f] border border-white/5 rounded-xl px-4 py-3 text-sm text-white
+               focus:border-green-500/50 outline-none transition">
+          <option>Todas as Categorias</option>
+          <option>Despesas</option>
+          <option>Receitas</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="p-8 space-y-6">
+
+      <div class="bg-[#0a0b0f] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition">
+
+        <div class="flex justify-between items-start mb-6">
+          <div>
+            <h3 class="text-xl font-black flex items-center gap-2">
+              <i class="fas fa-users text-purple-500"></i>
+              Salários
+            </h3>
+
+            <p class="text-gray-500 text-sm mt-1">
+              Despesa - Folha de pagamento dos jogadores
+            </p>
+          </div>
+
+          <div class="flex gap-3 text-sm">
+            <button class="text-yellow-400 hover:text-yellow-300 transition">
+              <i class="fas fa-edit"></i>
+            </button>
+
+            <button class="text-red-400 hover:text-red-300 transition">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mb-4">
+          <div>
+            <p class="text-gray-500 text-xs uppercase font-bold">Alocado</p>
+            <p class="text-lg font-black text-white">$120,000,000</p>
+          </div>
+
+          <div>
+            <p class="text-gray-500 text-xs uppercase font-bold">Gasto</p>
+            <p class="text-lg font-black text-red-400">$85,000,000</p>
+          </div>
+
+          <div>
+            <p class="text-gray-500 text-xs uppercase font-bold">Disponível</p>
+            <p class="text-lg font-black text-green-500">$35,000,000</p>
+          </div>
+        </div>
+
+        <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-green-500 to-green-400" style="width: 70.8%">
+          </div>
+        </div>
+
+        <p class="text-xs text-gray-500 mt-2">
+          70.8% utilizado
+        </p>
+
+      </div>
+
+    </div>
+  </div>
 </main>
 
-<!-- MODAL ANGULAR -->
-<div *ngIf="categoryModal"
-     class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
+<!-- MODAL -->
+<div *ngIf="modalAberto" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
 
   <div class="bg-[#0a0b0f] rounded-3xl p-8 w-full max-w-2xl border border-white/5">
 
     <div class="flex justify-between items-center mb-6">
-      <h3 class="text-2xl font-black">
+      <h3 class="text-2xl font-black mt-2 tracking-tight">
         Nova <span class="text-green-500">Categoria</span>
       </h3>
 
-      <button (click)="closeCategoryModal()"
-              class="text-gray-500 hover:text-white">
+      <button (click)="fecharModal()" class="text-gray-500 hover:text-white transition">
         <i class="fas fa-times"></i>
       </button>
     </div>
 
     <form class="space-y-4">
 
-      <input class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3"
-             placeholder="Nome da categoria">
+      <input class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3" placeholder="Nome da categoria">
 
       <select class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3">
         <option>Despesa</option>
         <option>Receita</option>
       </select>
 
-      <input type="number"
-             class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3"
-             placeholder="Valor">
+      <input type="number" class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3" placeholder="Valor">
 
-      <textarea class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3"
-                rows="3"
-                placeholder="Descrição"></textarea>
+      <textarea rows="3" class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3"
+        placeholder="Descrição"></textarea>
 
       <div class="flex justify-end gap-3">
-        <button type="button"
-                (click)="closeCategoryModal()"
-                class="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10">
+
+        <button type="button" (click)="fecharModal()" class="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10">
           Cancelar
         </button>
 
-        <button type="submit"
-                class="px-6 py-3 rounded-xl bg-green-500 text-black font-black">
+        <button type="submit" class="px-6 py-3 rounded-xl bg-green-500 text-black font-black">
           Salvar
         </button>
+
       </div>
 
     </form>
+
   </div>
 </div>

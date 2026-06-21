@@ -4,7 +4,17 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-orcamento',
   imports: [CommonModule],
-  templateUrl: './orcamento.html',
-  styleUrl: './orcamento.css',
+  templateUrl: './orcamentos.html',
+  styleUrl: './orcamentos.css',
 })
-export class OrcamentoComponent {}
+export class OrcamentosComponent {
+    modalAberto = false;
+
+  abrirModal() {
+    this.modalAberto = true;
+  }
+
+  fecharModal() {
+    this.modalAberto = false;
+  }
+}
