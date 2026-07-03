@@ -79,8 +79,9 @@
 
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Tipo</label>
-          <select class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
-            <option>Todos</option>
+          <select
+            class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
+            <option re>Todos</option>
             <option>Receita</option>
             <option>Despesa</option>
           </select>
@@ -88,7 +89,8 @@
 
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Categoria</label>
-          <select class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
+          <select
+            class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
             <option>Todas</option>
             <option>Venda de Jogador</option>
             <option>Compra de Jogador</option>
@@ -106,12 +108,13 @@
 
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Data Fim</label>
-          <input type="date"
+          <input name="data" type="date"
             class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50" />
         </div>
 
         <div class="flex items-end">
-          <button class="w-full bg-green-500 hover:bg-green-400 active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
+          <button
+            class="w-full bg-green-500 hover:bg-green-400 active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
             <i class="fas fa-search"></i> Filtrar
           </button>
         </div>
@@ -128,8 +131,10 @@
             <tr>
               <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Data</th>
               <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Tipo</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Descrição</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Categoria</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Descrição
+              </th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Categoria
+              </th>
               <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Valor</th>
               <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Saldo</th>
               <th class="px-6 py-4 text-center text-[10px] font-bold uppercase tracking-widest text-gray-500">Ações</th>
@@ -142,13 +147,16 @@
             <tr class="hover:bg-white/[0.02] transition">
               <td class="px-6 py-4 text-sm text-gray-400">24/05/2026</td>
               <td class="px-6 py-4">
-                <span class="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
+                <span
+                  class="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
                   <i class="fas fa-arrow-down text-[10px]"></i> Receita
                 </span>
               </td>
               <td class="px-6 py-4 text-sm text-white">Venda de Messi para PSG</td>
               <td class="px-6 py-4">
-                <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Venda de Jogador</span>
+                <span
+                  class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Venda
+                  de Jogador</span>
               </td>
               <td class="px-6 py-4 text-sm font-black text-green-500">+$150,000,000</td>
               <td class="px-6 py-4 text-sm text-gray-400">$1,200,000</td>
@@ -165,13 +173,15 @@
             <tr class="hover:bg-white/[0.02] transition">
               <td class="px-6 py-4 text-sm text-gray-400">21/05/2026</td>
               <td class="px-6 py-4">
-                <span class="bg-red-500/10 text-red-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
+                <span
+                  class="bg-red-500/10 text-red-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
                   <i class="fas fa-arrow-up text-[10px]"></i> Despesa
                 </span>
               </td>
               <td class="px-6 py-4 text-sm text-white">Folha de Pagamento - Maio</td>
               <td class="px-6 py-4">
-                <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Salários</span>
+                <span
+                  class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Salários</span>
               </td>
               <td class="px-6 py-4 text-sm font-black text-red-400">-$2,350,000</td>
               <td class="px-6 py-4 text-sm text-gray-400">$1,050,000</td>
@@ -188,13 +198,16 @@
             <tr class="hover:bg-white/[0.02] transition">
               <td class="px-6 py-4 text-sm text-gray-400">19/05/2026</td>
               <td class="px-6 py-4">
-                <span class="bg-red-500/10 text-red-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
+                <span
+                  class="bg-red-500/10 text-red-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
                   <i class="fas fa-arrow-up text-[10px]"></i> Despesa
                 </span>
               </td>
               <td class="px-6 py-4 text-sm text-white">Compra de Haaland - Manchester City</td>
               <td class="px-6 py-4">
-                <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Compra de Jogador</span>
+                <span
+                  class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Compra
+                  de Jogador</span>
               </td>
               <td class="px-6 py-4 text-sm font-black text-red-400">-$180,000,000</td>
               <td class="px-6 py-4 text-sm text-gray-400">$3,400,000</td>
@@ -211,13 +224,15 @@
             <tr class="hover:bg-white/[0.02] transition">
               <td class="px-6 py-4 text-sm text-gray-400">16/05/2026</td>
               <td class="px-6 py-4">
-                <span class="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
+                <span
+                  class="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
                   <i class="fas fa-arrow-down text-[10px]"></i> Receita
                 </span>
               </td>
               <td class="px-6 py-4 text-sm text-white">Bônus - Vitória na Champions League</td>
               <td class="px-6 py-4">
-                <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Bônus</span>
+                <span
+                  class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Bônus</span>
               </td>
               <td class="px-6 py-4 text-sm font-black text-green-500">+$50,000,000</td>
               <td class="px-6 py-4 text-sm text-gray-400">$3,250,000</td>
@@ -241,15 +256,19 @@
         </p>
 
         <div class="flex gap-2">
-          <button class="bg-[#0a0b0f] border border-white/5 hover:border-white/10 text-gray-400 hover:text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">
+          <button
+            class="bg-[#0a0b0f] border border-white/5 hover:border-white/10 text-gray-400 hover:text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">
             ← Anterior
           </button>
 
-          <button class="bg-green-500 text-black font-black px-4 py-2 rounded-xl text-xs uppercase tracking-wider">1</button>
+          <button
+            class="bg-green-500 text-black font-black px-4 py-2 rounded-xl text-xs uppercase tracking-wider">1</button>
 
-          <button class="bg-[#0a0b0f] border border-white/5 hover:border-white/10 text-gray-400 hover:text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">2</button>
+          <button
+            class="bg-[#0a0b0f] border border-white/5 hover:border-white/10 text-gray-400 hover:text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">2</button>
 
-          <button class="bg-[#0a0b0f] border border-white/5 hover:border-white/10 text-gray-400 hover:text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">
+          <button
+            class="bg-[#0a0b0f] border border-white/5 hover:border-white/10 text-gray-400 hover:text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">
             Próximo →
           </button>
         </div>
@@ -258,7 +277,7 @@
 
     <!-- Modal -->
     <div id="transactionModal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
-     <div class="bg-[#0a0b0f] rounded-3xl p-8 max-w-3xl w-full border border-white/5 shadow-2xl">
+      <div class="bg-[#0a0b0f] rounded-3xl p-8 max-w-3xl w-full border border-white/5 shadow-2xl">
 
         <div class="flex justify-between items-center mb-8">
           <h3 class="text-2xl font-black uppercase tracking-tighter">
@@ -276,54 +295,46 @@
           <div class="grid grid-cols-2 gap-4">
             <div class="flex flex-col gap-2">
               <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Tipo</label>
-              <select class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white outline-none transition focus:border-green-500/50">
-                <option>Selecione</option>
-                <option>Receita</option>
-                <option>Despesa</option>
+              <select [(ngModel)]="tipo" name="tipo"
+                class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white outline-none transition focus:border-green-500/50">
+                <option value="">Selecione</option>
+                <option value="Receita">Receita</option>
+                <option value="Despesa">Despesa</option>
               </select>
             </div>
 
             <div class="flex flex-col gap-2">
               <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Categoria</label>
-              <select class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white outline-none transition focus:border-green-500/50">
-                <option>Selecione</option>
-                <option>Venda de Jogador</option>
-                <option>Compra de Jogador</option>
-                <option>Salários</option>
-                <option>Bônus</option>
-                <option>Multa</option>
+              <select [(ngModel)]="categoria" name="categoria"
+                class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white outline-none transition focus:border-green-500/50">
+                <option value="">Selecione</option>
+                <option value="Venda de Jogador">Venda de Jogador</option>
+                <option value="Compra de Jogador">Compra de Jogador</option>
+                <option value="Salários">Salários</option>
+                <option value="Bônus">Bônus</option>
+                <option value="Multa">Multa</option>
               </select>
             </div>
           </div>
 
           <div class="flex flex-col gap-2">
             <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Descrição</label>
-            <input type="text" placeholder="Ex: Venda de Messi para PSG"
+            <input name="descricao" type="text" [(ngModel)]="descricao" placeholder="Ex: Venda de Messi para PSG"
               class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-700 outline-none transition focus:border-green-500/50" />
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div class="flex flex-col gap-2">
               <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Valor</label>
-              <input type="number" placeholder="Ex: 150000000"
+              <input [(ngModel)]="valor" name="valor" type="number" placeholder="Ex: 150000000"
                 class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-700 outline-none transition focus:border-green-500/50" />
             </div>
 
             <div class="flex flex-col gap-2">
               <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Data</label>
-              <input type="date"
+              <input type="date" [(ngModel)]="data"
                 class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white outline-none transition focus:border-green-500/50" />
             </div>
-          </div>
-
-          <div class="flex flex-col gap-2">
-            <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Jogador Afetado (Opcional)</label>
-            <select class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white outline-none transition focus:border-green-500/50">
-              <option>Nenhum</option>
-              <option>Lionel Messi</option>
-              <option>Erling Haaland</option>
-              <option>Mohamed Salah</option>
-            </select>
           </div>
 
           <div class="flex justify-end gap-3 mt-2">
@@ -332,7 +343,7 @@
               Cancelar
             </button>
 
-            <button type="submit"
+            <button type="submit" (click)="salvar()"
               class="bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-8 py-3 rounded-xl transition-all">
               Registrar Transação →
             </button>
