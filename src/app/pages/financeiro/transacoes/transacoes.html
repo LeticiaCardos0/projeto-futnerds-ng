@@ -12,11 +12,22 @@
             Registre e acompanhe todas as movimentações financeiras
           </p>
         </div>
-        <button onclick="document.getElementById('transactionModal').classList.remove('hidden')"
-          class="bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all flex items-center gap-2">
-          <i class="fas fa-plus"></i>
-          <span>Registrar Transação</span>
-        </button>
+
+        <div class="flex items-center gap-3">
+          <!-- Botão de troca de moeda -->
+          <button (click)="alternarMoeda()" title="Alternar moeda (Real / Euro)"
+            class="bg-[#0a0b0f] border border-white/5 hover:border-green-500/40 text-gray-300 hover:text-green-400 font-black uppercase tracking-widest text-xs px-4 py-3 rounded-xl transition-all flex items-center gap-2">
+            <i class="fas fa-coins"></i>
+            <span>{{ moedaAtual === 'BRL' ? 'R$ Real' : '€ Euro' }}</span>
+            <i class="fas fa-right-left text-[10px] opacity-60"></i>
+          </button>
+
+          <button (click)="abrirModalCadastro()"
+            class="bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all flex items-center gap-2">
+            <i class="fas fa-plus"></i>
+            <span>Registrar Transação</span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -28,7 +39,9 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Total de Receitas</p>
-              <p class="text-2xl font-black text-green-500 mt-2 tracking-tight">$2,450,000</p>
+              <p class="text-2xl font-black text-green-500 mt-2 tracking-tight">
+                {{ simboloMoeda }}{{ totalReceitas | number:'1.0-0' }}
+              </p>
             </div>
             <i class="fas fa-arrow-up text-green-500 text-2xl opacity-20"></i>
           </div>
@@ -38,7 +51,9 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Total de Despesas</p>
-              <p class="text-2xl font-black text-red-400 mt-2 tracking-tight">$1,850,000</p>
+              <p class="text-2xl font-black text-red-400 mt-2 tracking-tight">
+                {{ simboloMoeda }}{{ totalDespesas | number:'1.0-0' }}
+              </p>
             </div>
             <i class="fas fa-arrow-down text-red-400 text-2xl opacity-20"></i>
           </div>
@@ -48,7 +63,10 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Saldo Líquido</p>
-              <p class="text-2xl font-black text-white mt-2 tracking-tight">$600,000</p>
+              <p class="text-2xl font-black mt-2 tracking-tight"
+                [ngClass]="{'text-green-500': saldoLiquido > 0, 'text-red-400': saldoLiquido < 0, 'text-white': saldoLiquido === 0}">
+                {{ simboloMoeda }}{{ saldoLiquido | number:'1.0-0' }}
+              </p>
             </div>
             <i class="fas fa-wallet text-gray-600 text-2xl opacity-40"></i>
           </div>
@@ -58,7 +76,9 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Total de Transações</p>
-              <p class="text-2xl font-black text-white mt-2 tracking-tight">47</p>
+              <p class="text-2xl font-black text-white mt-2 tracking-tight">
+                {{ totalTransacoes }}
+              </p>
             </div>
             <i class="fas fa-exchange-alt text-gray-600 text-2xl opacity-40"></i>
           </div>
@@ -73,50 +93,54 @@
 
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Pesquisar</label>
-          <input type="text" placeholder="Descrição..."
+          <input type="text" [(ngModel)]="filtroPesquisa" name="filtroPesquisa" placeholder="Descrição..."
             class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-gray-700 outline-none transition focus:border-green-500/50" />
         </div>
 
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Tipo</label>
-          <select
+          <select [(ngModel)]="filtroTipo" name="filtroTipo"
             class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
-            <option re>Todos</option>
-            <option>Receita</option>
-            <option>Despesa</option>
+            <option value="Todos">Todos</option>
+            <option value="Receita">Receita</option>
+            <option value="Despesa">Despesa</option>
           </select>
         </div>
 
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Categoria</label>
-          <select
+          <select [(ngModel)]="filtroCategoria" name="filtroCategoria"
             class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
-            <option>Todas</option>
-            <option>Venda de Jogador</option>
-            <option>Compra de Jogador</option>
-            <option>Salários</option>
-            <option>Bônus</option>
-            <option>Multa</option>
+            <option value="Todas">Todas</option>
+            <option value="Venda de Jogador">Venda de Jogador</option>
+            <option value="Compra de Jogador">Compra de Jogador</option>
+            <option value="Salários">Salários</option>
+            <option value="Bônus">Bônus</option>
+            <option value="Multa">Multa</option>
           </select>
         </div>
 
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Data Início</label>
-          <input type="date"
+          <input type="date" [(ngModel)]="filtroDataInicio" name="filtroDataInicio"
             class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50" />
         </div>
 
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Data Fim</label>
-          <input name="data" type="date"
+          <input type="date" [(ngModel)]="filtroDataFim" name="filtroDataFim"
             class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50" />
         </div>
 
-        <div class="flex items-end">
-          <button
-            class="w-full bg-green-500 hover:bg-green-400 active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
-            <i class="fas fa-search"></i> Filtrar
+        <div class="flex items-end gap-2">
+          <button type="button" (click)="limparFiltros()"
+            class="bg-[#161920] border border-white/5 hover:border-white/10 text-gray-400 hover:text-white font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
+            <i class="fas fa-eraser"></i>
           </button>
+          <div
+            class="w-full bg-green-500/10 border border-green-500/20 text-green-500 font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-xl flex items-center justify-center gap-2">
+            <i class="fas fa-filter"></i> {{ indicesFiltrados.length }} resultado(s)
+          </div>
         </div>
 
       </div>
@@ -131,10 +155,8 @@
             <tr>
               <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Data</th>
               <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Tipo</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Descrição
-              </th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Categoria
-              </th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Descrição</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Categoria</th>
               <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Valor</th>
               <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Saldo</th>
               <th class="px-6 py-4 text-center text-[10px] font-bold uppercase tracking-widest text-gray-500">Ações</th>
@@ -142,109 +164,49 @@
           </thead>
 
           <tbody class="divide-y divide-white/5">
-
-            <!-- Row 1 -->
-            <tr class="hover:bg-white/[0.02] transition">
-              <td class="px-6 py-4 text-sm text-gray-400">24/05/2026</td>
+            <tr *ngFor="let i of indicesFiltrados" class="hover:bg-white/[0.02] transition">
+              <td class="px-6 py-4 text-sm text-gray-400">{{ datas[i] }}</td>
               <td class="px-6 py-4">
-                <span
+                <span *ngIf="tipos[i] === 'Receita'"
                   class="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
                   <i class="fas fa-arrow-down text-[10px]"></i> Receita
                 </span>
-              </td>
-              <td class="px-6 py-4 text-sm text-white">Venda de Messi para PSG</td>
-              <td class="px-6 py-4">
-                <span
-                  class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Venda
-                  de Jogador</span>
-              </td>
-              <td class="px-6 py-4 text-sm font-black text-green-500">+$150,000,000</td>
-              <td class="px-6 py-4 text-sm text-gray-400">$1,200,000</td>
-              <td class="px-6 py-4">
-                <div class="flex justify-center gap-3">
-                  <button class="text-gray-600 hover:text-white transition"><i class="fas fa-eye"></i></button>
-                  <button class="text-gray-600 hover:text-green-400 transition"><i class="fas fa-edit"></i></button>
-                  <button class="text-gray-600 hover:text-red-400 transition"><i class="fas fa-trash"></i></button>
-                </div>
-              </td>
-            </tr>
-
-            <!-- Row 2 -->
-            <tr class="hover:bg-white/[0.02] transition">
-              <td class="px-6 py-4 text-sm text-gray-400">21/05/2026</td>
-              <td class="px-6 py-4">
-                <span
+                <span *ngIf="tipos[i] === 'Despesa'"
                   class="bg-red-500/10 text-red-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
                   <i class="fas fa-arrow-up text-[10px]"></i> Despesa
                 </span>
               </td>
-              <td class="px-6 py-4 text-sm text-white">Folha de Pagamento - Maio</td>
+              <td class="px-6 py-4 text-sm text-white">{{ descricoes[i] }}</td>
               <td class="px-6 py-4">
-                <span
-                  class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Salários</span>
-              </td>
-              <td class="px-6 py-4 text-sm font-black text-red-400">-$2,350,000</td>
-              <td class="px-6 py-4 text-sm text-gray-400">$1,050,000</td>
-              <td class="px-6 py-4">
-                <div class="flex justify-center gap-3">
-                  <button class="text-gray-600 hover:text-white transition"><i class="fas fa-eye"></i></button>
-                  <button class="text-gray-600 hover:text-green-400 transition"><i class="fas fa-edit"></i></button>
-                  <button class="text-gray-600 hover:text-red-400 transition"><i class="fas fa-trash"></i></button>
-                </div>
-              </td>
-            </tr>
-
-            <!-- Row 3 -->
-            <tr class="hover:bg-white/[0.02] transition">
-              <td class="px-6 py-4 text-sm text-gray-400">19/05/2026</td>
-              <td class="px-6 py-4">
-                <span
-                  class="bg-red-500/10 text-red-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
-                  <i class="fas fa-arrow-up text-[10px]"></i> Despesa
+                <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">
+                  {{ categorias[i] }}
                 </span>
               </td>
-              <td class="px-6 py-4 text-sm text-white">Compra de Haaland - Manchester City</td>
-              <td class="px-6 py-4">
-                <span
-                  class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Compra
-                  de Jogador</span>
+              <td class="px-6 py-4 text-sm font-black"
+                [ngClass]="{'text-green-500': tipos[i] === 'Receita', 'text-red-400': tipos[i] === 'Despesa'}">
+                {{ tipos[i] === 'Receita' ? '+' : '-' }}{{ simboloMoeda }}{{ converter(valores[i]) | number:'1.0-0' }}
               </td>
-              <td class="px-6 py-4 text-sm font-black text-red-400">-$180,000,000</td>
-              <td class="px-6 py-4 text-sm text-gray-400">$3,400,000</td>
+              <td class="px-6 py-4 text-sm text-gray-400">
+                {{ simboloMoeda }}{{ calcularSaldoAte(i) | number:'1.0-0' }}
+              </td>
               <td class="px-6 py-4">
                 <div class="flex justify-center gap-3">
-                  <button class="text-gray-600 hover:text-white transition"><i class="fas fa-eye"></i></button>
-                  <button class="text-gray-600 hover:text-green-400 transition"><i class="fas fa-edit"></i></button>
-                  <button class="text-gray-600 hover:text-red-400 transition"><i class="fas fa-trash"></i></button>
+                  <button (click)="preencherCamposParaEditar(tipos[i], categorias[i], descricoes[i], datas[i], valores[i])"
+                    class="text-gray-600 hover:text-green-400 transition" title="Editar">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button (click)="apagar(descricoes[i])" class="text-gray-600 hover:text-red-400 transition" title="Excluir">
+                    <i class="fas fa-trash"></i>
+                  </button>
                 </div>
               </td>
             </tr>
 
-            <!-- Row 4 -->
-            <tr class="hover:bg-white/[0.02] transition">
-              <td class="px-6 py-4 text-sm text-gray-400">16/05/2026</td>
-              <td class="px-6 py-4">
-                <span
-                  class="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
-                  <i class="fas fa-arrow-down text-[10px]"></i> Receita
-                </span>
-              </td>
-              <td class="px-6 py-4 text-sm text-white">Bônus - Vitória na Champions League</td>
-              <td class="px-6 py-4">
-                <span
-                  class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Bônus</span>
-              </td>
-              <td class="px-6 py-4 text-sm font-black text-green-500">+$50,000,000</td>
-              <td class="px-6 py-4 text-sm text-gray-400">$3,250,000</td>
-              <td class="px-6 py-4">
-                <div class="flex justify-center gap-3">
-                  <button class="text-gray-600 hover:text-white transition"><i class="fas fa-eye"></i></button>
-                  <button class="text-gray-600 hover:text-green-400 transition"><i class="fas fa-edit"></i></button>
-                  <button class="text-gray-600 hover:text-red-400 transition"><i class="fas fa-trash"></i></button>
-                </div>
+            <tr *ngIf="indicesFiltrados.length === 0">
+              <td colspan="7" class="px-6 py-10 text-center text-sm text-gray-600">
+                Nenhuma transação encontrada para os filtros selecionados.
               </td>
             </tr>
-
           </tbody>
         </table>
       </div>
@@ -252,7 +214,7 @@
       <!-- Pagination -->
       <div class="mt-6 flex justify-between items-center">
         <p class="text-gray-600 text-xs font-bold uppercase tracking-widest">
-          Mostrando 1 a 4 de 47 transações
+          Mostrando {{ indicesFiltrados.length }} de {{ totalTransacoes }} transações
         </p>
 
         <div class="flex gap-2">
@@ -276,21 +238,20 @@
     </div>
 
     <!-- Modal -->
-    <div id="transactionModal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
+    <div *ngIf="modalAberto" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
       <div class="bg-[#0a0b0f] rounded-3xl p-8 max-w-3xl w-full border border-white/5 shadow-2xl">
 
         <div class="flex justify-between items-center mb-8">
           <h3 class="text-2xl font-black uppercase tracking-tighter">
-            Registrar <span class="text-green-500">Transação</span>
+            {{ indiceParaEditar === -1 ? 'Registrar' : 'Editar' }} <span class="text-green-500">Transação</span>
           </h3>
 
-          <button onclick="document.getElementById('transactionModal').classList.add('hidden')"
-            class="text-gray-600 hover:text-white transition text-lg">
+          <button (click)="fecharModal()" class="text-gray-600 hover:text-white transition text-lg">
             <i class="fas fa-times"></i>
           </button>
         </div>
 
-        <form class="flex flex-col gap-5">
+        <form (ngSubmit)="salvar()" class="flex flex-col gap-5">
 
           <div class="grid grid-cols-2 gap-4">
             <div class="flex flex-col gap-2">
@@ -325,27 +286,27 @@
 
           <div class="grid grid-cols-2 gap-4">
             <div class="flex flex-col gap-2">
-              <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Valor</label>
+              <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Valor (em R$)</label>
               <input [(ngModel)]="valor" name="valor" type="number" placeholder="Ex: 150000000"
                 class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-700 outline-none transition focus:border-green-500/50" />
             </div>
 
             <div class="flex flex-col gap-2">
               <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Data</label>
-              <input type="date" [(ngModel)]="data"
+              <input type="date" [(ngModel)]="data" name="data"
                 class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white outline-none transition focus:border-green-500/50" />
             </div>
           </div>
 
           <div class="flex justify-end gap-3 mt-2">
-            <button type="button" onclick="document.getElementById('transactionModal').classList.add('hidden')"
+            <button type="button" (click)="fecharModal()"
               class="bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all">
               Cancelar
             </button>
 
-            <button type="submit" (click)="salvar()"
+            <button type="submit"
               class="bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-8 py-3 rounded-xl transition-all">
-              Registrar Transação →
+              {{ indiceParaEditar === -1 ? 'Registrar Transação →' : 'Salvar Alterações →' }}
             </button>
           </div>
 
