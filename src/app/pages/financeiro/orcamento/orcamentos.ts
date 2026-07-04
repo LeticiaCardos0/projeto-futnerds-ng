@@ -139,7 +139,11 @@ export class OrcamentosComponent {
   }
 
   percentualCategoria(categoria: Categoria): number {
-    return categoria.alocado > 0 ? (categoria.gasto / categoria.alocado) * 100 : 0;
+    if (!categoria.alocado || categoria.alocado <= 0) {
+      return 0;
+    }
+    const percentual = (categoria.gasto / categoria.alocado) * 100;
+    return Math.min(Math.max(percentual, 0), 100);
   }
 
   disponivelCategoria(categoria: Categoria): number {
