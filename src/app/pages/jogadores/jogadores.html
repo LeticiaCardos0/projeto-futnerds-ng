@@ -33,6 +33,7 @@
                 <img 
                   [src]="jogador.foto" 
                   [alt]="jogador.nome"
+                  (error)="$event.target.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%231e2130%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 fill=%22%236b7280%22 text-anchor=%22middle%22 dy=%22.3em%22%3E?%3C/text%3E%3C/svg%3E'"
                   class="w-10 h-10 rounded-full object-cover"
                 />
               </td>
@@ -76,7 +77,9 @@
 
               <!-- Ações -->
               <td class="px-6 py-4">
-                <button class="px-3 py-1 bg-green-500 text-black rounded hover:bg-green-600 transition text-sm font-medium">
+                <button 
+                  (click)="abrirModalAdicionar(jogador)"
+                  class="px-3 py-1 bg-green-500 text-black rounded hover:bg-green-600 transition text-sm font-medium">
                   Adicionar
                 </button>
               </td>
@@ -90,5 +93,87 @@
     <div *ngIf="jogadores.length === 0" class="text-center py-12">
       <p class="text-gray-400">Nenhum jogador encontrado</p>
     </div>
+  </div>
+</div>
+
+<!-- Modal de Adicionar Jogador -->
+<div *ngIf="mostrarModalAdicionar" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-[#13151c] border border-[#1e2130] rounded-lg p-8 w-full max-w-md mx-auto shadow-lg">
+    <h2 class="text-2xl font-bold text-white mb-6">Adicionar {{ jogadorParaAdicionar?.nome }} ao Elenco</h2>
+
+    <form (ngSubmit)="adicionarJogadorAoElenco()">
+      <!-- Salário -->
+      <div class="mb-4">
+        <label for="salario" class="block text-gray-300 text-sm font-bold mb-2">Salário Semanal</label>
+        <div class="relative">
+          <span class="absolute left-3 top-3 text-gray-400 text-sm font-medium">R$</span>
+          <input 
+            type="text" 
+            id="salario" 
+            name="salario"
+            [value]="obterValorFormatado(jogadorParaAdicionar!.salario)"
+            (input)="formatarSalarioInput($event)"
+            placeholder="0"
+            class="shadow appearance-none border rounded w-full py-2 pl-8 pr-3 text-gray-200 leading-tight focus:outline-none focus:shadow-outline focus:border-green-500 bg-[#0a0b0f] border-[#1e2130] text-right font-mono"
+            required
+          >
+        </div>
+        <p class="text-xs text-gray-500 mt-1">{{ formatarMoeda(jogadorParaAdicionar!.salario) }}</p>
+      </div>
+
+      <!-- Valor de Mercado -->
+      <div class="mb-4">
+        <label for="valor" class="block text-gray-300 text-sm font-bold mb-2">Valor de Mercado</label>
+        <div class="relative">
+          <span class="absolute left-3 top-3 text-gray-400 text-sm font-medium">€</span>
+          <input 
+            type="text" 
+            id="valor" 
+            name="valor"
+            [value]="obterValorFormatado(jogadorParaAdicionar!.valor)"
+            (input)="formatarSalarioInput($event)"
+            placeholder="0"
+            class="shadow appearance-none border rounded w-full py-2 pl-8 pr-3 text-gray-200 leading-tight focus:outline-none focus:shadow-outline focus:border-green-500 bg-[#0a0b0f] border-[#1e2130] text-right font-mono"
+            required
+          >
+        </div>
+        <p class="text-xs text-gray-500 mt-1">{{ formatarMoeda(jogadorParaAdicionar!.valor) }}</p>
+      </div>
+
+      <!-- Multa Rescisória -->
+      <div class="mb-6">
+        <label for="multa" class="block text-gray-300 text-sm font-bold mb-2">Multa Rescisória</label>
+        <div class="relative">
+          <span class="absolute left-3 top-3 text-gray-400 text-sm font-medium">€</span>
+          <input 
+            type="text" 
+            id="multa" 
+            name="multa"
+            [value]="obterValorFormatado(jogadorParaAdicionar!.multa)"
+            (input)="formatarSalarioInput($event)"
+            placeholder="0"
+            class="shadow appearance-none border rounded w-full py-2 pl-8 pr-3 text-gray-200 leading-tight focus:outline-none focus:shadow-outline focus:border-green-500 bg-[#0a0b0f] border-[#1e2130] text-right font-mono"
+            required
+          >
+        </div>
+        <p class="text-xs text-gray-500 mt-1">{{ formatarMoeda(jogadorParaAdicionar!.multa) }}</p>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button 
+          type="submit" 
+          class="bg-green-500 hover:bg-green-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition"
+        >
+          Confirmar Adição
+        </button>
+        <button 
+          type="button" 
+          (click)="fecharModalAdicionar()"
+          class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
   </div>
 </div>

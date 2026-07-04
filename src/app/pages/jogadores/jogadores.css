@@ -31,3 +31,40 @@ tbody tr:hover {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+
+/* Estilos para o modal de adição de jogador */
+input[type="text"]::placeholder {
+  color: #6b7280;
+}
+
+input[type="text"]:focus {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Estilo para o símbolo de moeda */
+.relative span {
+  pointer-events: none;
+}
+
+/* Animação suave para o modal */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fixed > div {
+  animation: slideIn 0.2s ease-out;
+}
+
+/* Melhor aparência dos inputs de moeda */
+input[type="text"].font-mono {
+  letter-spacing: 0.5px;
+}

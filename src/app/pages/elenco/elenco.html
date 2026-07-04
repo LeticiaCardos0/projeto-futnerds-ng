@@ -1,0 +1,93 @@
+<div class="min-h-screen bg-[#0a0b0f] pt-20 pb-10">
+  <div class="max-w-7xl mx-auto px-5">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-white mb-2">Meu Elenco</h1>
+      <p class="text-gray-400">Gerencie seu time e jogadores selecionados</p>
+    </div>
+
+    <!-- Informações do Time Selecionado -->
+    <div *ngIf="timeSelecionado" class="bg-[#13151c] border border-[#1e2130] rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">Time Selecionado:</h2>
+      <div class="flex items-center space-x-4">
+        <img [src]="timeSelecionado.logo" [alt]="timeSelecionado.nome" class="w-16 h-16 rounded object-cover" />
+        <div>
+          <p class="text-white text-xl font-medium">{{ timeSelecionado.nome }}</p>
+          <p class="text-gray-400">Orçamento: {{ formatarMoeda(timeSelecionado.orcamento) }}</p>
+        </div>
+      </div>
+      <div class="mt-4">
+        <p class="text-gray-300">Total de Gastos com Salários: <span class="font-bold">{{ formatarMoeda(totalGastos) }}</span></p>
+        <p *ngIf="timeSelecionado.orcamento < totalGastos" class="text-red-500 text-sm mt-2">Atenção: O total de gastos com salários excede o orçamento do seu time!</p>
+      </div>
+      <button 
+        (click)="limparElenco()"
+        class="mt-6 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition text-sm font-medium">
+        Limpar Time e Elenco
+      </button>
+    </div>
+
+    <div *ngIf="!timeSelecionado" class="text-center py-12 bg-[#13151c] border border-[#1e2130] rounded-lg">
+      <p class="text-gray-400 text-lg">Nenhum time selecionado. Vá para a página de <a routerLink="/times" class="text-blue-500 hover:underline">Times</a> para escolher um.</p>
+    </div>
+
+    <!-- Tabela de Jogadores no Elenco -->
+    <div *ngIf="elenco.length > 0" class="bg-[#13151c] border border-[#1e2130] rounded-lg overflow-hidden mt-8">
+      <h2 class="text-2xl font-bold text-white p-6 border-b border-[#1e2130]">Jogadores no Elenco:</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-[#161820] border-b border-[#1e2130]">
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Foto</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Nome</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Posição</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Time Original</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Salário</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Valor</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Multa</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let jogador of elenco" class="border-b border-[#1e2130] hover:bg-[#161820] transition">
+              <td class="px-6 py-4">
+                <img [src]="jogador.foto" [alt]="jogador.nome" class="w-10 h-10 rounded-full object-cover" />
+              </td>
+              <td class="px-6 py-4">
+                <span class="text-white font-medium">{{ jogador.nome }}</span>
+              </td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-medium">
+                  {{ jogador.posicao }}
+                </span>
+              </td>
+              <td class="px-6 py-4">
+                <span class="text-gray-300">{{ jogador.timeOriginal }}</span>
+              </td>
+              <td class="px-6 py-4">
+                <span class="text-gray-300">{{ formatarMoeda(jogador.salario) }}</span>
+              </td>
+              <td class="px-6 py-4">
+                <span class="text-gray-300">{{ formatarMoeda(jogador.valor) }}</span>
+              </td>
+              <td class="px-6 py-4">
+                <span class="text-gray-300">{{ formatarMoeda(jogador.multa) }}</span>
+              </td>
+              <td class="px-6 py-4">
+                <button 
+                  (click)="removerJogador(jogador.id)"
+                  class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition text-sm font-medium">
+                  Remover
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div *ngIf="elenco.length === 0 && timeSelecionado" class="text-center py-12 bg-[#13151c] border border-[#1e2130] rounded-lg mt-8">
+      <p class="text-gray-400 text-lg">Seu elenco está vazio. Vá para a página de <a routerLink="/jogadores" class="text-blue-500 hover:underline">Jogadores</a> para adicionar.</p>
+    </div>
+  </div>
+</div>
