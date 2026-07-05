@@ -8,12 +8,18 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/cadastro/login/login';
 import { TransacoesComponent } from './pages/financeiro/transacoes/transacoes';
 import { RedefinirSenha } from './pages/cadastro/redefinir-senha/redefinir-senha';
+import { TimesComponent } from './pages/times/times';
+import { JogadoresComponent } from './pages/jogadores/jogadores';
+import { ElencoComponent } from './pages/elenco/elenco';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'login', component: LoginComponent },
   { path: 'redefinir-senha', component: RedefinirSenha },
+  { path: 'times', component: TimesComponent },
+  { path: 'jogadores', component: JogadoresComponent },
+  { path: 'elenco', component: ElencoComponent },
   { path: 'financeiro', component: FinanceiroComponent },
   { path: 'transacoes', component: TransacoesComponent },
   { path: 'orcamentos', component: OrcamentosComponent },
