@@ -15,7 +15,7 @@
         </div>
 
         <button (click)="alternarMoeda()"
-          class="bg-white/5 hover:bg-white/10 border border-white/10 text-white font-black uppercase tracking-widest text-xs px-5 py-3 rounded-xl transition-all flex items-center gap-2">
+          class="cursor-pointer bg-white/5 hover:bg-white/10 border border-white/10 text-white font-black uppercase tracking-widest text-xs px-5 py-3 rounded-xl transition-all flex items-center gap-2">
           <i class="fas fa-exchange-alt text-green-500"></i>
           <span>{{ moedaAtual === 'BRL' ? 'R$ → €' : '€ → R$' }}</span>
         </button>
@@ -67,7 +67,7 @@
         <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-3">
           Receitas x Despesas x Saldo
         </p>
-        <div class="relative h-56">
+        <div class="cursor-pointer relative h-56">
           <canvas #rdsChartRef role="img"
             aria-label="Gráfico de barras comparando receitas, despesas e saldo líquido">
           </canvas>
@@ -78,7 +78,7 @@
         <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-3 self-start">
           Orçamento Utilizado
         </p>
-        <div class="relative flex items-center justify-center h-56 w-full">
+        <div class="cursor-pointer relative flex items-center justify-center h-56 w-full">
           <canvas #orcChartRef role="img"
             aria-label="Gráfico de rosca mostrando o percentual de orçamento utilizado e disponível">
           </canvas>
@@ -108,7 +108,7 @@
           <h3 class="text-sm font-black uppercase tracking-widest text-gray-400">
             Orçamento por Categoria
           </h3>
-          <a routerLink="/financeiro/orcamento"
+          <a routerLink="/orcamentos"
             class="text-[10px] font-bold uppercase tracking-widest text-green-500 hover:text-green-400 transition flex items-center gap-1">
             Ver tudo <i class="fas fa-arrow-right"></i>
           </a>
@@ -144,7 +144,7 @@
           <h3 class="text-sm font-black uppercase tracking-widest text-gray-400">
             Comissão Técnica
           </h3>
-          <a routerLink="/financeiro/comissao-tecnica"
+          <a routerLink="/comissao-tecnica"
             class="text-[10px] font-bold uppercase tracking-widest text-green-500 hover:text-green-400 transition flex items-center gap-1">
             Ver tudo <i class="fas fa-arrow-right"></i>
           </a>
@@ -176,7 +176,7 @@
           <h3 class="text-sm font-black uppercase tracking-widest text-gray-400">
             Últimas Transações
           </h3>
-          <a routerLink="/financeiro/transacoes"
+          <a routerLink="/transacoes"
             class="text-[10px] font-bold uppercase tracking-widest text-green-500 hover:text-green-400 transition flex items-center gap-1">
             Ver tudo <i class="fas fa-arrow-right"></i>
           </a>

@@ -56,32 +56,32 @@ export class JogadoresComponent implements OnInit {
     { id: 11, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/f_valverde_e06132c0.png', nome: 'F. Valverde', idade: 26, posicao: 'Meio-Campo', timeAtual: 'Real Madrid', salario: 400000, valor: 120500000, multa: 24100000 },
     { id: 12, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/player-images/a_hakimi_8lmu3w65.png', nome: 'A. Hakimi', idade: 26, posicao: 'Lateral', timeAtual: 'Paris Saint-Germain', salario: 360000, valor: 111000000, multa: 22200000 },
     { id: 13, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/g_donnarumma_099ac8ec.png', nome: 'G. Donnarumma', idade: 26, posicao: 'Goleiro', timeAtual: 'Paris Saint-Germain', salario: 330000, valor: 97000000, multa: 19400000 },
-    { id: 14, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/j_bellingham_01309328.png', nome: 'J. Bellingham', idade: 22, posicao: 'Meio-Campo', timeAtual: 'Real Madrid', salario: 390000, valor: 150500000, multa: 30100000 },
+    { id: 14, foto: 'https://cdn-img.staticzz.com/img/jogadores/new/75/32/737532_jude_bellingham_20250618231333.png', nome: 'J. Bellingham', idade: 22, posicao: 'Meio-Campo', timeAtual: 'Real Madrid', salario: 390000, valor: 150500000, multa: 30100000 },
     { id: 15, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/vini_jr_25114c31.png', nome: 'Vini Jr.', idade: 24, posicao: 'Ponta', timeAtual: 'Real Madrid', salario: 440000, valor: 141000000, multa: 28200000 },
-    { id: 16, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/lamine_yamal_4e98e945.png', nome: 'Lamine Yamal', idade: 17, posicao: 'Ponta', timeAtual: 'FC Barcelona', salario: 180000, valor: 147000000, multa: 29400000 },
-    { id: 17, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/j_musiala_98897e64.png', nome: 'J. Musiala', idade: 22, posicao: 'Meio-Campo', timeAtual: 'FC Bayern München', salario: 380000, valor: 133500000, multa: 26700000 },
-    { id: 18, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/b_saka_13f3e9a4.png', nome: 'B. Saka', idade: 23, posicao: 'Ponta', timeAtual: 'Arsenal', salario: 400000, valor: 103500000, multa: 20700000 },
-    { id: 19, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/l_d_az_7f8e8f2e.png', nome: 'L. Díaz', idade: 28, posicao: 'Ponta', timeAtual: 'Liverpool', salario: 350000, valor: 80000000, multa: 16000000 },
-    { id: 20, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/a_bastoni_8e9e8f2e.png', nome: 'A. Bastoni', idade: 26, posicao: 'Zagueiro', timeAtual: 'Inter de Milão', salario: 320000, valor: 87000000, multa: 17400000 },
-    { id: 21, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/k_kvaratskhelia_7e9e8f2e.png', nome: 'K. Kvaratskhelia', idade: 24, posicao: 'Ponta', timeAtual: 'Napoli', salario: 380000, valor: 109000000, multa: 21800000 },
-    { id: 22, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/f_wirtz_6e9e8f2e.png', nome: 'F. Wirtz', idade: 22, posicao: 'Meio-Campo', timeAtual: 'B. Leverkusen', salario: 360000, valor: 116500000, multa: 23300000 },
-    { id: 23, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/m_degaard_5e9e8f2e.png', nome: 'M. Ødegaard', idade: 26, posicao: 'Meio-Campo', timeAtual: 'Arsenal', salario: 390000, valor: 110000000, multa: 22000000 },
-    { id: 24, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/v_van_dijk_4e9e8f2e.png', nome: 'V. van Dijk', idade: 33, posicao: 'Zagueiro', timeAtual: 'Liverpool', salario: 400000, valor: 43500000, multa: 8700000 },
-    { id: 25, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/alisson_3e9e8f2e.png', nome: 'Alisson', idade: 32, posicao: 'Goleiro', timeAtual: 'Liverpool', salario: 300000, valor: 45000000, multa: 9000000 },
-    { id: 26, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/j_kimmich_2e9e8f2e.png', nome: 'J. Kimmich', idade: 30, posicao: 'Meio-Campo', timeAtual: 'FC Bayern München', salario: 380000, valor: 86000000, multa: 17200000 },
-    { id: 27, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/bruno_fernandes_1e9e8f2e.png', nome: 'B. Fernandes', idade: 30, posicao: 'Meio-Campo', timeAtual: 'Manchester United', salario: 390000, valor: 88000000, multa: 17600000 },
-    { id: 28, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/raphinha_e9e8f2e.png', nome: 'Raphinha', idade: 28, posicao: 'Ponta', timeAtual: 'FC Barcelona', salario: 350000, valor: 104000000, multa: 20800000 },
-    { id: 29, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/l_mart_nez_d9e8f2e.png', nome: 'L. Martínez', idade: 27, posicao: 'Atacante', timeAtual: 'Inter de Milão', salario: 420000, valor: 99000000, multa: 19800000 },
-    { id: 30, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/n_barella_c9e8f2e.png', nome: 'N. Barella', idade: 28, posicao: 'Meio-Campo', timeAtual: 'Inter de Milão', salario: 380000, valor: 91500000, multa: 18300000 },
-    { id: 31, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/d_rice_b9e8f2e.png', nome: 'D. Rice', idade: 26, posicao: 'Meio-Campo', timeAtual: 'Arsenal', salario: 400000, valor: 96000000, multa: 19200000 },
-    { id: 32, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/m_caicedo_a9e8f2e.png', nome: 'M. Caicedo', idade: 23, posicao: 'Meio-Campo', timeAtual: 'Chelsea', salario: 350000, valor: 107000000, multa: 21400000 },
-    { id: 33, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/nuno_mendes_9e9e8f2e.png', nome: 'Nuno Mendes', idade: 23, posicao: 'Lateral', timeAtual: 'Paris Saint-Germain', salario: 320000, valor: 115500000, multa: 23100000 },
-    { id: 34, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/a_isak_8e9e8f2e.png', nome: 'A. Isak', idade: 25, posicao: 'Atacante', timeAtual: 'Newcastle United', salario: 350000, valor: 96500000, multa: 19300000 },
-    { id: 35, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/v_osimhen_7e9e8f2e.png', nome: 'V. Osimhen', idade: 26, posicao: 'Atacante', timeAtual: 'Galatasaray SK', salario: 400000, valor: 95000000, multa: 19000000 },
-    { id: 36, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/david_raya_6e9e8f2e.png', nome: 'David Raya', idade: 29, posicao: 'Goleiro', timeAtual: 'Arsenal', salario: 280000, valor: 54500000, multa: 10900000 },
-    { id: 37, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/m_maignan_5e9e8f2e.png', nome: 'M. Maignan', idade: 29, posicao: 'Goleiro', timeAtual: 'AC Milan', salario: 300000, valor: 61000000, multa: 12200000 },
-    { id: 38, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/j_tah_4e9e8f2e.png', nome: 'J. Tah', idade: 29, posicao: 'Zagueiro', timeAtual: 'B. Leverkusen', salario: 320000, valor: 66500000, multa: 13300000 },
-    { id: 39, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/a_mac_allister_3e9e8f2e.png', nome: 'A. Mac Allister', idade: 26, posicao: 'Meio-Campo', timeAtual: 'Liverpool', salario: 380000, valor: 105000000, multa: 21000000 }
+    { id: 16, foto: 'https://images.fifaindex.com/fc26/players/277643.webp', nome: 'Lamine Yamal', idade: 17, posicao: 'Ponta', timeAtual: 'FC Barcelona', salario: 180000, valor: 147000000, multa: 29400000 },
+    { id: 17, foto: 'https://images.fifaindex.com/fc26/players/256790.webp', nome: 'J. Musiala', idade: 22, posicao: 'Meio-Campo', timeAtual: 'FC Bayern München', salario: 380000, valor: 133500000, multa: 26700000 },
+    { id: 18, foto: 'https://images.fifaindex.com/fc26/players/246669.webp', nome: 'B. Saka', idade: 23, posicao: 'Ponta', timeAtual: 'Arsenal', salario: 400000, valor: 103500000, multa: 20700000 },
+    { id: 19, foto: 'https://images.fifaindex.com/fc26/players/241084.webp', nome: 'L. Díaz', idade: 28, posicao: 'Ponta', timeAtual: 'Liverpool', salario: 350000, valor: 80000000, multa: 16000000 },
+    { id: 20, foto: 'https://images.fifaindex.com/fc26/players/237383.webp', nome: 'A. Bastoni', idade: 26, posicao: 'Zagueiro', timeAtual: 'Inter de Milão', salario: 320000, valor: 87000000, multa: 17400000 },
+    { id: 21, foto: 'https://images.fifaindex.com/fc26/players/247635.webp', nome: 'K. Kvaratskhelia', idade: 24, posicao: 'Ponta', timeAtual: 'Napoli', salario: 380000, valor: 109000000, multa: 21800000 },
+    { id: 22, foto: 'https://images.fifaindex.com/fc26/players/256630.webp', nome: 'F. Wirtz', idade: 22, posicao: 'Meio-Campo', timeAtual: 'B. Leverkusen', salario: 360000, valor: 116500000, multa: 23300000 },
+    { id: 23, foto: 'https://images.fifaindex.com/fc26/players/222665.webp', nome: 'M. Ødegaard', idade: 26, posicao: 'Meio-Campo', timeAtual: 'Arsenal', salario: 390000, valor: 110000000, multa: 22000000 },
+    { id: 24, foto: 'https://images.fifaindex.com/fc26/players/203376.webp', nome: 'V. van Dijk', idade: 33, posicao: 'Zagueiro', timeAtual: 'Liverpool', salario: 400000, valor: 43500000, multa: 8700000 },
+    { id: 25, foto: 'https://images.fifaindex.com/fc26/players/212831.webp', nome: 'Alisson', idade: 32, posicao: 'Goleiro', timeAtual: 'Liverpool', salario: 300000, valor: 45000000, multa: 9000000 },
+    { id: 26, foto: 'https://images.fifaindex.com/fc26/players/212622.webp', nome: 'J. Kimmich', idade: 30, posicao: 'Meio-Campo', timeAtual: 'FC Bayern München', salario: 380000, valor: 86000000, multa: 17200000 },
+    { id: 27, foto: 'https://images.fifaindex.com/fc26/players/212198.webp', nome: 'B. Fernandes', idade: 30, posicao: 'Meio-Campo', timeAtual: 'Manchester United', salario: 390000, valor: 88000000, multa: 17600000 },
+    { id: 28, foto: 'https://images.fifaindex.com/fc26/players/233419.webp', nome: 'Raphinha', idade: 28, posicao: 'Ponta', timeAtual: 'FC Barcelona', salario: 350000, valor: 104000000, multa: 20800000 },
+    { id: 29, foto: 'https://images.fifaindex.com/fc26/players/231478.webp', nome: 'L. Martínez', idade: 27, posicao: 'Atacante', timeAtual: 'Inter de Milão', salario: 420000, valor: 99000000, multa: 19800000 },
+    { id: 30, foto: 'https://images.fifaindex.com/fc26/players/224232.webp', nome: 'N. Barella', idade: 28, posicao: 'Meio-Campo', timeAtual: 'Inter de Milão', salario: 380000, valor: 91500000, multa: 18300000 },
+    { id: 31, foto: 'https://images.fifaindex.com/fc26/players/234378.webp', nome: 'D. Rice', idade: 26, posicao: 'Meio-Campo', timeAtual: 'Arsenal', salario: 400000, valor: 96000000, multa: 19200000 },
+    { id: 32, foto: 'https://images.fifaindex.com/fc26/players/256079.webp', nome: 'M. Caicedo', idade: 23, posicao: 'Meio-Campo', timeAtual: 'Chelsea', salario: 350000, valor: 107000000, multa: 21400000 },
+    { id: 33, foto: 'https://images.fifaindex.com/fc26/players/252145.webp', nome: 'Nuno Mendes', idade: 23, posicao: 'Lateral', timeAtual: 'Paris Saint-Germain', salario: 320000, valor: 115500000, multa: 23100000 },
+    { id: 34, foto: 'https://images.fifaindex.com/fc26/players/233731.webp', nome: 'A. Isak', idade: 25, posicao: 'Atacante', timeAtual: 'Newcastle United', salario: 350000, valor: 96500000, multa: 19300000 },
+    { id: 35, foto: 'https://images.fifaindex.com/fc26/players/232293.webp', nome: 'V. Osimhen', idade: 26, posicao: 'Atacante', timeAtual: 'Galatasaray SK', salario: 400000, valor: 95000000, multa: 19000000 },
+    { id: 36, foto: 'https://images.fifaindex.com/fc26/players/220901.webp', nome: 'David Raya', idade: 29, posicao: 'Goleiro', timeAtual: 'Arsenal', salario: 280000, valor: 54500000, multa: 10900000 },
+    { id: 37, foto: 'https://images.fifaindex.com/fc26/players/215698.webp', nome: 'M. Maignan', idade: 29, posicao: 'Goleiro', timeAtual: 'AC Milan', salario: 300000, valor: 61000000, multa: 12200000 },
+    { id: 38, foto: 'https://images.fifaindex.com/fc26/players/213331.webp', nome: 'J. Tah', idade: 29, posicao: 'Zagueiro', timeAtual: 'B. Leverkusen', salario: 320000, valor: 66500000, multa: 13300000 },
+    { id: 39, foto: 'https://images.fifaindex.com/fc26/players/239837.webp', nome: 'A. Mac Allister', idade: 26, posicao: 'Meio-Campo', timeAtual: 'Liverpool', salario: 380000, valor: 105000000, multa: 21000000 }
   ];
 
   timeSelecionado: TimeSelecionado | null = null;
@@ -163,7 +163,7 @@ export class JogadoresComponent implements OnInit {
   fecharModalAdicionar() {
     this.mostrarModalAdicionar = false;
     this.jogadorParaAdicionar = null;
-  }''
+  }
 
   adicionarJogadorAoElenco() {
     if (this.jogadorParaAdicionar && this.timeSelecionado) {
@@ -191,7 +191,6 @@ export class JogadoresComponent implements OnInit {
       });
 
       this.fecharModalAdicionar();
-      this.router.navigate(['/elenco']);
     }
   }
 }

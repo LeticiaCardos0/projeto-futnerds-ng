@@ -1,3 +1,4 @@
+<p-toast />
 <div class="min-h-screen bg-[#030609] text-white pt-24 pb-10">
 
   <div class="max-w-[1600px] mx-auto px-8">
@@ -99,7 +100,7 @@
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Tipo</label>
           <select [(ngModel)]="filtroTipo" name="filtroTipo"
-            class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
+            class="cursor-pointer w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
             <option value="Todos">Todos</option>
             <option value="Receita">Receita</option>
             <option value="Despesa">Despesa</option>
@@ -109,7 +110,7 @@
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Categoria</label>
           <select [(ngModel)]="filtroCategoria" name="filtroCategoria"
-            class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
+            class="cursor-pointer w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
             <option value="Todas">Todas</option>
             <option value="Venda de Jogador">Venda de Jogador</option>
             <option value="Compra de Jogador">Compra de Jogador</option>
@@ -122,18 +123,18 @@
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Data Início</label>
           <input type="date" [(ngModel)]="filtroDataInicio" name="filtroDataInicio"
-            class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50" />
+            class="cursor-pointer w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50" />
         </div>
 
         <div class="flex flex-col gap-2">
           <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Data Fim</label>
           <input type="date" [(ngModel)]="filtroDataFim" name="filtroDataFim"
-            class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50" />
+            class="cursor-pointer w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50" />
         </div>
 
         <div class="flex items-end gap-2">
           <button type="button" (click)="limparFiltros()"
-            class="bg-[#161920] border border-white/5 hover:border-white/10 text-gray-400 hover:text-white font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
+            class="bg-[#161920] cursor-pointer border border-white/5 hover:border-white/10 text-gray-400 hover:text-white font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
             <i class="fas fa-eraser"></i>
           </button>
           <div
@@ -191,11 +192,11 @@
               <td class="px-6 py-4">
                 <div class="flex justify-center gap-3">
                   <button (click)="preencherCamposParaEditar(tipos[i], categorias[i], descricoes[i], datas[i], valores[i])"
-                    class="text-gray-600 hover:text-green-400 transition" title="Editar">
+                    class="cursor-pointer text-gray-600 hover:text-green-400 transition" title="Editar">
                     <i class="fas fa-edit"></i>
                   </button>
                   <button (click)="apagar(descricoes[i])" class="text-gray-600 hover:text-red-400 transition" title="Excluir">
-                    <i class="fas fa-trash"></i>
+                    <i class="cursor-pointer fas fa-trash"></i>
                   </button>
                 </div>
               </td>
@@ -245,7 +246,7 @@
             {{ indiceParaEditar === -1 ? 'Registrar' : 'Editar' }} <span class="text-green-500">Transação</span>
           </h3>
 
-          <button (click)="fecharModal()" class="text-gray-600 hover:text-white transition text-lg">
+          <button (click)="fecharModal()" class="cursor-pointer hover:rotate-90 text-gray-600 hover:text-white transition text-lg">
             <i class="fas fa-times"></i>
           </button>
         </div>
@@ -299,12 +300,12 @@
 
           <div class="flex justify-end gap-3 mt-2">
             <button type="button" (click)="fecharModal()"
-              class="bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all">
+              class="cursor-pointer bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all">
               Cancelar
             </button>
 
             <button type="submit"
-              class="bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-8 py-3 rounded-xl transition-all">
+              class="cursor-pointer bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-8 py-3 rounded-xl transition-all">
               {{ indiceParaEditar === -1 ? 'Registrar Transação →' : 'Salvar Alterações →' }}
             </button>
           </div>

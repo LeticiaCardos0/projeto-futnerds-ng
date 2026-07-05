@@ -18,7 +18,7 @@
     <div *ngIf="timeSelecionado" class="bg-[#0a0b0f] rounded-2xl border border-white/5 p-6 mb-8">
       <div class="flex justify-between items-start flex-wrap gap-4 mb-6">
         <div class="flex items-center gap-4">
-          <div class="w-16 h-16 rounded-2xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
+          <div class="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center flex-shrink-0">
             <img [src]="timeSelecionado.logo" [alt]="timeSelecionado.nome" class="w-full h-full object-cover" />
           </div>
           <div>
@@ -26,12 +26,18 @@
             <p class="text-white text-xl font-black mt-1">{{ timeSelecionado.nome }}</p>
           </div>
         </div>
-
+        <div class="flex justify-between items-start flex-wrap gap-4 mb-6">
+        <button
+          routerLink="/jogadores"
+          class="cursor-pointer bg-green-500/10 hover:bg-green-500/20 border border-green-500/20 text-green-500 font-black uppercase tracking-widest text-xs px-4 py-3 rounded-xl transition">
+          Adicionar Jogadores
+        </button>
         <button
           (click)="limparElenco()"
-          class="bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 font-black uppercase tracking-widest text-xs px-4 py-3 rounded-xl transition">
+          class="cursor-pointer bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 font-black uppercase tracking-widest text-xs px-4 py-3 rounded-xl transition">
           Limpar Time e Elenco
         </button>
+        </div>
       </div>
 
       <!-- KPIs -->
@@ -80,7 +86,7 @@
         <!-- SELETOR DE FORMAÇÃO -->
         <div class="flex gap-2 flex-wrap">
           <button *ngFor="let formacao of formacoesDisponiveis" (click)="selecionarFormacao(formacao)"
-            class="px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
+            class="cursor-pointer px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
             [ngClass]="formacaoSelecionada === formacao
               ? 'bg-green-500 text-black scale-[1.03]'
               : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'">
@@ -197,9 +203,10 @@
               <td class="px-6 py-4">
                 <button
                   (click)="removerJogador(jogador.id)"
-                  class="bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 font-black uppercase tracking-widest text-xs px-4 py-2 rounded-xl transition">
+                  class="cursor-pointer bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 font-black uppercase tracking-widest text-xs px-4 py-2 rounded-xl transition">
                   Remover
                 </button>
+                
               </td>
             </tr>
           </tbody>

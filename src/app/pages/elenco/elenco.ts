@@ -134,7 +134,7 @@ export class ElencoComponent implements OnInit {
   constructor(
     private confirmationService: ConfirmationService,
     private messageService: MessageService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.carregarDados();
@@ -159,12 +159,13 @@ export class ElencoComponent implements OnInit {
     if (!jogador) return;
 
     this.confirmationService.confirm({
-      message: `Tem certeza que deseja remover ${jogador.nome} do elenco?`,
       header: 'Remover Jogador',
-      icon: 'pi pi-exclamation-triangle',
+      message: `Tem certeza que deseja remover <strong>${jogador.nome}</strong> do elenco?`,
+      icon: '',
       acceptLabel: 'Remover',
       rejectLabel: 'Cancelar',
-      acceptButtonStyleClass: 'p-button-danger',
+      acceptButtonStyleClass: 'p-confirm-dialog-accept',
+      rejectButtonStyleClass: 'p-confirm-dialog-reject',
       accept: () => {
         this.elenco = this.elenco.filter((j) => j.id !== jogadorId);
         localStorage.setItem(CHAVE_ELENCO, JSON.stringify(this.elenco));

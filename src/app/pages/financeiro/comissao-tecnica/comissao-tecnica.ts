@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 export interface MembroComissao {
   id: number;
@@ -8,9 +10,9 @@ export interface MembroComissao {
   funcao: string;
   categoria: 'Treinador' | 'Preparador Físico' | 'Fisioterapeuta' | 'Analista' | 'Diretoria' | 'Outro';
   contato: string;
-  dataContratacao: string; // formato yyyy-mm-dd (input date)
-  fotoUrl: string | null; // base64 ou url da imagem
-  nivel: number; // 1 a 5 estrelas
+  dataContratacao: string;
+  fotoUrl: string | null;
+  nivel: number;
   pais: string;
   especialidades: string;
   salario: number;
@@ -20,11 +22,14 @@ export interface MembroComissao {
 @Component({
   selector: 'app-comissao-tecnica',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ToastModule],
+  providers: [MessageService],
   templateUrl: './comissao-tecnica.html',
   styleUrl: './comissao-tecnica.css',
 })
 export class ComissaoTecnicaComponent {
+  constructor(private messageService: MessageService) {}
+
   // ---------- Estado geral ----------
   modalAberto = false;
   modoEdicao = false;
@@ -34,7 +39,7 @@ export class ComissaoTecnicaComponent {
   termoPesquisa = '';
 
   moedaAtual: 'BRL' | 'EUR' = 'BRL';
-  taxaCambio = 5.35; // 1 EUR = 5,35 BRL (referência)
+  taxaCambio = 5.35;
 
   // ---------- Dados ----------
   membros: MembroComissao[] = [
@@ -59,7 +64,7 @@ export class ComissaoTecnicaComponent {
       categoria: 'Treinador',
       contato: 'carlos.mendes@futnerds.com',
       dataContratacao: '2023-08-01',
-      fotoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4QctrVwpegCaLspLusFesd_k7SbW2YOXH9wR3OON5A0oDJmZ3ZfQuCeeB&s=10', 
+      fotoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4QctrVwpegCaLspLusFesd_k7SbW2YOXH9wR3OON5A0oDJmZ3ZfQuCeeB&s=10',
       nivel: 3,
       pais: 'Portugal',
       especialidades: 'Reflexos, Posicionamento e Saída de Bola',
@@ -202,6 +207,11 @@ export class ComissaoTecnicaComponent {
 
   salvarMembro(): void {
     if (!this.form.nome || !this.form.nome.trim() || !this.form.funcao || !this.form.funcao.trim()) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Campos Obrigatórios',
+        detail: 'Preencha nome e função para continuar.',
+      });
       return;
     }
 
@@ -223,6 +233,11 @@ export class ComissaoTecnicaComponent {
           valorContratacao: Number(this.form.valorContratacao) || 0,
         };
       }
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Membro Atualizado',
+        detail: `${this.form.nome} foi atualizado com sucesso.`,
+      });
     } else {
       const novoMembro: MembroComissao = {
         id: this.proximoId++,
@@ -239,6 +254,11 @@ export class ComissaoTecnicaComponent {
         valorContratacao: Number(this.form.valorContratacao) || 0,
       };
       this.membros.push(novoMembro);
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Membro Cadastrado',
+        detail: `${novoMembro.nome} foi adicionado à comissão técnica.`,
+      });
     }
 
     this.fecharModal();
@@ -246,6 +266,11 @@ export class ComissaoTecnicaComponent {
 
   excluirMembro(membro: MembroComissao): void {
     this.membros = this.membros.filter((m) => m.id !== membro.id);
+    this.messageService.add({
+      severity: 'warn',
+      summary: 'Membro Excluído',
+      detail: `${membro.nome} foi removido da comissão técnica.`,
+    });
   }
 
   // ---------- Utilitários de exibição ----------

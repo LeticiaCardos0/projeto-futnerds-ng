@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 export interface Categoria {
   id: number;
@@ -18,18 +20,21 @@ type Moeda = 'BRL' | 'EUR';
 @Component({
   selector: 'app-orcamento',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ToastModule],
+  providers: [MessageService],
   templateUrl: './orcamentos.html',
   styleUrl: './orcamentos.css',
 })
 export class OrcamentosComponent {
+  constructor(private messageService: MessageService) {}
+
   // ---------- Estado geral ----------
   modalAberto = false;
   modoEdicao = false;
   categoriaEmEdicaoId: number | null = null;
 
   moedaAtual: Moeda = 'BRL';
-  taxaCambio = 5.35; // 1 EUR = 5,35 BRL (referência)
+  taxaCambio = 5.35;
 
   filtroTipo: 'Todas as Categorias' | 'Despesas' | 'Receitas' = 'Todas as Categorias';
 
@@ -174,6 +179,11 @@ export class OrcamentosComponent {
 
   salvarCategoria(): void {
     if (!this.form.nome || !this.form.nome.trim()) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Campo Obrigatório',
+        detail: 'Informe o nome da categoria.',
+      });
       return;
     }
 
@@ -189,6 +199,11 @@ export class OrcamentosComponent {
           descricao: this.form.descricao || '',
         };
       }
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Categoria Atualizada',
+        detail: `${this.form.nome} foi atualizada com sucesso.`,
+      });
     } else {
       const novaCategoria: Categoria = {
         id: this.proximoId++,
@@ -201,6 +216,11 @@ export class OrcamentosComponent {
         corIcone: 'text-green-400',
       };
       this.categorias.push(novaCategoria);
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Categoria Cadastrada',
+        detail: `${novaCategoria.nome} foi adicionada ao orçamento.`,
+      });
     }
 
     this.fecharModal();
@@ -208,5 +228,10 @@ export class OrcamentosComponent {
 
   excluirCategoria(categoria: Categoria): void {
     this.categorias = this.categorias.filter((c) => c.id !== categoria.id);
+    this.messageService.add({
+      severity: 'warn',
+      summary: 'Categoria Excluída',
+      detail: `${categoria.nome} foi removida do orçamento.`,
+    });
   }
 }

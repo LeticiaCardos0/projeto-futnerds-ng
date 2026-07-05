@@ -2,6 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
+
+// Mesmo valor de CHAVE_ELENCO em jogadores.ts.
+// Repetido aqui (em vez de importado) para evitar import circular entre times.ts <-> jogadores.ts.
+const CHAVE_ELENCO_LOCALSTORAGE = 'futnerds_elenco';
+
 export interface TimeSelecionado {
   id: number;
   nome: string;
@@ -23,7 +31,8 @@ export const CHAVE_TIME_SELECIONADO = 'futnerds_time_selecionado';
 @Component({
   selector: 'app-times',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ConfirmDialogModule, ToastModule],
+  providers: [ConfirmationService, MessageService],
   templateUrl: './times.html',
   styleUrl: './times.css'
 })
@@ -49,11 +58,15 @@ export class TimesComponent {
     { id: 18, logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/tottenham_hotspur_logo_cf1b4d28.png', nome: 'Tottenham', pais: 'Inglaterra', liga: 'Premier League', orcamento: 127000000 },
     { id: 19, logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/west_ham_united_logo_5c699304.png', nome: 'West Ham', pais: 'Inglaterra', liga: 'Premier League', orcamento: 70000000 },
     { id: 20, logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/everton_logo_188343e9.png', nome: 'Everton', pais: 'Inglaterra', liga: 'Premier League', orcamento: 40000000 },
-    { id: 21, logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/leicester_city_logo_7c8518fce.png', nome: 'Leicester City', pais: 'Inglaterra', liga: 'Premier League', orcamento: 60000000 },
+    { id: 21, logo: 'https://upload.wikimedia.org/wikipedia/pt/0/0e/LeicesterCity_logo2014.png', nome: 'Leicester City', pais: 'Inglaterra', liga: 'Premier League', orcamento: 60000000 },
     { id: 22, logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/wolverhampton_wanderers_logo_eecd6a5e.png', nome: 'Wolverhampton', pais: 'Inglaterra', liga: 'Premier League', orcamento: 53000000 }
   ];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
+  ) {}
 
   selecionarTime(time: Time) {
     const timeSelecionado: TimeSelecionado = {
@@ -63,9 +76,23 @@ export class TimesComponent {
       orcamento: time.orcamento
     };
 
+    const dadosTimeAtual = localStorage.getItem(CHAVE_TIME_SELECIONADO);
+    const timeAtual: TimeSelecionado | null = dadosTimeAtual ? JSON.parse(dadosTimeAtual) : null;
+
+    const dadosElenco = localStorage.getItem(CHAVE_ELENCO_LOCALSTORAGE);
+    const elencoAtual = dadosElenco ? JSON.parse(dadosElenco) : [];
+
+    this.confirmarSelecaoDoTime(timeSelecionado);
+  }
+
+  private confirmarSelecaoDoTime(timeSelecionado: TimeSelecionado): void {
     localStorage.setItem(CHAVE_TIME_SELECIONADO, JSON.stringify(timeSelecionado));
 
-    this.router.navigate(['/jogadores']);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Time selecionado',
+      detail: `${timeSelecionado.nome} foi definido como seu time.`
+    });
   }
 
   formatarMoeda(valor: number): string {

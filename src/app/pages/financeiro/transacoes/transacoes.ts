@@ -1,15 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-transacoes',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ToastModule],
+  providers: [MessageService],
   templateUrl: './transacoes.html',
   styleUrl: './transacoes.css',
 })
 export class TransacoesComponent {
+  constructor(private messageService: MessageService) {}
 
   tipos: string[] = ['Receita', 'Despesa', 'Despesa', 'Receita'];
   categorias: string[] = ['Venda de Jogador', 'Salários', 'Compra de Jogador', 'Bônus'];
@@ -36,10 +40,8 @@ export class TransacoesComponent {
   indiceParaEditar: number = -1;
 
   // --- Moeda ---
-  // Os valores no array `valores` são sempre armazenados em BRL (moeda base).
-  // A taxa é só para exibição.
   moedaAtual: 'BRL' | 'EUR' = 'BRL';
-  taxaEurPorReal: number = 0.16; // 1 BRL = 0.16 EUR (ajuste conforme necessário)
+  taxaEurPorReal: number = 0.16;
 
   alternarMoeda(): void {
     this.moedaAtual = this.moedaAtual === 'BRL' ? 'EUR' : 'BRL';
@@ -60,7 +62,6 @@ export class TransacoesComponent {
   filtroDataInicio: string = "";
   filtroDataFim: string = "";
 
-  // Converte 'dd/MM/yyyy' para Date, para permitir comparação de datas
   private paraData(dataBr: string): Date | null {
     if (!dataBr) return null;
     const partes = dataBr.split('/');
@@ -73,7 +74,6 @@ export class TransacoesComponent {
     return this.descricoes
       .map((_, i) => i)
       .filter(i => {
-        // Filtro por texto (descrição)
         if (this.filtroPesquisa.trim() !== "") {
           const termo = this.filtroPesquisa.trim().toLowerCase();
           if (!this.descricoes[i].toLowerCase().includes(termo)) {
@@ -81,17 +81,14 @@ export class TransacoesComponent {
           }
         }
 
-        // Filtro por tipo
         if (this.filtroTipo !== "Todos" && this.tipos[i] !== this.filtroTipo) {
           return false;
         }
 
-        // Filtro por categoria
         if (this.filtroCategoria !== "Todas" && this.categorias[i] !== this.filtroCategoria) {
           return false;
         }
 
-        // Filtro por data início/fim
         const dataLinha = this.paraData(this.datas[i]);
         if (this.filtroDataInicio && dataLinha) {
           const inicio = new Date(this.filtroDataInicio);
@@ -131,8 +128,6 @@ export class TransacoesComponent {
     this.modalAberto = false;
   }
 
-  // --- Métodos de cálculo dinâmico para os Cards de Resumo ---
-  // Agora calculados com base nos índices filtrados
   get totalReceitas(): number {
     let total = 0;
     for (const i of this.indicesFiltrados) {
@@ -161,9 +156,6 @@ export class TransacoesComponent {
     return this.indicesFiltrados.length;
   }
 
-  // --- Método para calcular o saldo dinâmico da tabela (Linha por Linha) ---
-  // Mantém a lógica original com base no array completo (não filtrado),
-  // pois o saldo histórico deve refletir a ordem real das transações.
   calcularSaldoAte(limiteIndex: number): number {
     let saldo = 0;
     for (let i = this.valores.length - 1; i >= limiteIndex; i--) {
@@ -178,27 +170,27 @@ export class TransacoesComponent {
 
   salvar(): void {
     if (this.tipo.trim() === "") {
-      alert("Selecione o tipo da transação");
+      this.messageService.add({ severity: 'error', summary: 'Campo Obrigatório', detail: 'Selecione o tipo da transação.' });
       return;
     }
 
     if (this.categoria.trim() === "") {
-      alert("Selecione a categoria");
+      this.messageService.add({ severity: 'error', summary: 'Campo Obrigatório', detail: 'Selecione a categoria.' });
       return;
     }
 
     if (this.descricao.trim() === "") {
-      alert("Informe uma descrição");
+      this.messageService.add({ severity: 'error', summary: 'Campo Obrigatório', detail: 'Informe uma descrição.' });
       return;
     }
 
     if (this.data === "") {
-      alert("Informe a data");
+      this.messageService.add({ severity: 'error', summary: 'Campo Obrigatório', detail: 'Informe a data.' });
       return;
     }
 
     if (this.valor <= 0) {
-      alert("Informe um valor válido");
+      this.messageService.add({ severity: 'error', summary: 'Valor Inválido', detail: 'Informe um valor válido.' });
       return;
     }
 
@@ -218,17 +210,22 @@ export class TransacoesComponent {
   }
 
   cadastrar(): void {
-    // Insere no início do array para manter a ordem cronológica visual (mais recente primeiro)
     this.tipos.unshift(this.tipo);
     this.categorias.unshift(this.categoria);
     this.descricoes.unshift(this.descricao);
     this.datas.unshift(this.data);
     this.valores.unshift(this.valor);
 
-    alert("Transação cadastrada com sucesso");
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Transação Registrada',
+      detail: `${this.descricao} foi cadastrada com sucesso.`,
+    });
   }
 
   editar(): void {
+    const descricaoAnterior = this.descricoes[this.indiceParaEditar];
+
     this.tipos[this.indiceParaEditar] = this.tipo;
     this.categorias[this.indiceParaEditar] = this.categoria;
     this.descricoes[this.indiceParaEditar] = this.descricao;
@@ -237,7 +234,11 @@ export class TransacoesComponent {
 
     this.indiceParaEditar = -1;
 
-    alert("Transação editada com sucesso");
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Transação Editada',
+      detail: `${descricaoAnterior} foi atualizada com sucesso.`,
+    });
   }
 
   apagar(descricaoTransacao: string): void {
@@ -248,6 +249,12 @@ export class TransacoesComponent {
       this.descricoes.splice(indice, 1);
       this.datas.splice(indice, 1);
       this.valores.splice(indice, 1);
+
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Transação Excluída',
+        detail: `${descricaoTransacao} foi removida.`,
+      });
     }
   }
 
