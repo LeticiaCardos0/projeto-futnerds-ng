@@ -4,8 +4,6 @@ import { ComissaoTecnicaComponent } from './pages/financeiro/comissao-tecnica/co
 import { RelatoriosComponent } from './pages/financeiro/relatorios/relatorios'
 import { CadastroComponent } from './pages/cadastro/cadastro';
 import { HomeComponent } from './pages/home/home';
-import { JogadoresComponent } from './pages/jogadores/jogadores';
-import { TimesComponent } from './pages/times/times';
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/cadastro/login/login';
 import { TransacoesComponent } from './pages/financeiro/transacoes/transacoes';
@@ -16,8 +14,6 @@ export const routes: Routes = [
   { path: 'cadastro', component: CadastroComponent },
   { path: 'login', component: LoginComponent },
   { path: 'redefinir-senha', component: RedefinirSenha },
-  { path: 'jogadores', component: JogadoresComponent },
-  { path: 'times', component: TimesComponent },
   { path: 'financeiro', component: FinanceiroComponent },
   { path: 'transacoes', component: TransacoesComponent },
   { path: 'orcamentos', component: OrcamentosComponent },

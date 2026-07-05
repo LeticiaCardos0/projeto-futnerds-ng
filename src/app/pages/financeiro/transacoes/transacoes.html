@@ -16,13 +16,13 @@
         <div class="flex items-center gap-3">
           <!-- Botão de troca de moeda -->
           <button (click)="alternarMoeda()" title="Alternar moeda (Real / Euro)"
-            class="bg-white/5 hover:bg-white/10 border border-white/10 text-white font-black uppercase tracking-widest text-xs px-5 py-3 rounded-xl transition-all flex items-center gap-2">
+            class="cursor-pointer bg-white/5 hover:bg-white/10 border border-white/10 text-white font-black uppercase tracking-widest text-xs px-5 py-3 rounded-xl transition-all flex items-center gap-2">
             <i class="fas fa-exchange-alt text-green-500"></i>
             <span>{{ moedaAtual === 'BRL' ? 'R$ → €' : '€ → R$' }}</span>
           </button>
 
           <button (click)="abrirModalCadastro()"
-            class="bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all flex items-center gap-2">
+            class="cursor-pointer bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all flex items-center gap-2">
             <i class="fas fa-plus"></i>
             <span>Registrar Transação</span>
           </button>
