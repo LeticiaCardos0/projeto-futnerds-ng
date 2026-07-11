@@ -13,6 +13,38 @@
       </p>
     </header>
 
+    <!-- FILTROS -->
+    <div class="mb-6 flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between">
+
+      <!-- Busca por nome -->
+      <div class="relative w-full lg:max-w-xs">
+        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-fg-subtle text-sm"></i>
+        <input
+          type="text"
+          [(ngModel)]="termoBusca"
+          (ngModelChange)="aoFiltrar()"
+          placeholder="Buscar jogador..."
+          class="w-full bg-surface border border-fg/5 rounded-xl pl-11 pr-4 py-3 text-sm focus:border-accent/50 outline-none transition"
+        >
+      </div>
+
+      <!-- Filtro por posição -->
+      <div class="flex flex-wrap gap-2">
+        <button
+          type="button"
+          *ngFor="let posicao of posicoesDisponiveis"
+          (click)="selecionarPosicao(posicao)"
+          [class.bg-accent]="posicaoSelecionada === posicao"
+          [class.text-accent-fg]="posicaoSelecionada === posicao"
+          [class.bg-surface]="posicaoSelecionada !== posicao"
+          [class.text-fg-muted]="posicaoSelecionada !== posicao"
+          class="cursor-pointer px-4 py-2 rounded-xl text-[11px] font-bold uppercase tracking-widest hover:bg-accent-hover hover:text-accent-fg transition whitespace-nowrap">
+          {{ posicao }}
+        </button>
+      </div>
+
+    </div>
+
     <!-- TABELA DE JOGADORES -->
     <div class="bg-surface rounded-2xl border border-fg/5 overflow-hidden">
       <div class="overflow-x-auto">
@@ -32,7 +64,7 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let jogador of jogadores" class="border-b border-fg/5 hover:bg-fg/5 transition">
+            <tr *ngFor="let jogador of jogadoresPaginados" class="border-b border-fg/5 hover:bg-fg/5 transition">
               <!-- Foto -->
               <td class="px-6 py-4">
                 <img
@@ -94,9 +126,49 @@
       </div>
     </div>
 
+    <!-- PAGINAÇÃO -->
+    <div *ngIf="jogadoresFiltrados.length > 0" class="flex items-center justify-between mt-6 flex-wrap gap-4">
+      <p class="text-fg-subtle text-xs font-medium">
+        Página {{ paginaAtual }} de {{ totalPaginas }} — {{ jogadoresFiltrados.length }} jogadores
+      </p>
+
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          (click)="paginaAnterior()"
+          [disabled]="paginaAtual === 1"
+          class="cursor-pointer disabled:cursor-not-allowed disabled:opacity-30 w-9 h-9 flex items-center justify-center rounded-lg bg-surface-2 hover:bg-fg/10 text-fg-muted hover:text-fg transition">
+          <i class="fas fa-chevron-left text-xs"></i>
+        </button>
+
+        <button
+          type="button"
+          *ngFor="let pagina of paginasArray"
+          (click)="irParaPagina(pagina)"
+          [class.bg-accent]="pagina === paginaAtual"
+          [class.text-accent-fg]="pagina === paginaAtual"
+          [class.bg-surface-2]="pagina !== paginaAtual"
+          [class.text-fg-muted]="pagina !== paginaAtual"
+          class="cursor-pointer w-9 h-9 flex items-center justify-center rounded-lg font-bold text-xs hover:bg-accent-hover hover:text-accent-fg transition">
+          {{ pagina }}
+        </button>
+
+        <button
+          type="button"
+          (click)="proximaPagina()"
+          [disabled]="paginaAtual === totalPaginas"
+          class="cursor-pointer disabled:cursor-not-allowed disabled:opacity-30 w-9 h-9 flex items-center justify-center rounded-lg bg-surface-2 hover:bg-fg/10 text-fg-muted hover:text-fg transition">
+          <i class="fas fa-chevron-right text-xs"></i>
+        </button>
+      </div>
+    </div>
+
     <!-- ESTADO VAZIO -->
-    <div *ngIf="jogadores.length === 0" class="text-center py-12 text-fg-subtle">
-      Nenhum jogador encontrado.
+    <div *ngIf="jogadoresFiltrados.length === 0" class="text-center py-12 text-fg-subtle">
+      Nenhum jogador encontrado com esses filtros.
+      <button type="button" (click)="limparFiltros()" class="block mx-auto mt-3 text-accent hover:underline text-sm font-bold">
+        Limpar filtros
+      </button>
     </div>
 
   </div>
