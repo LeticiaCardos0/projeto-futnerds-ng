@@ -1,56 +1,56 @@
 <p-toast position="top-right"></p-toast>
 
-<div class="min-h-screen bg-[#030609] text-white pt-32 pb-16">
+<div class="min-h-screen bg-bg text-fg pt-32 pb-16">
   <div class="max-w-[1600px] mx-auto px-6">
 
     <!-- HEADER -->
-    <header class="pb-6 border-b border-white/10 mb-8">
+    <header class="pb-6 border-b border-fg/10 mb-8">
       <h2 class="text-3xl font-black uppercase tracking-tighter">
-        Banco de <span class="text-green-500">Jogadores</span>
+        Banco de <span class="text-accent">Jogadores</span>
       </h2>
-      <p class="text-gray-500 mt-1 text-sm font-medium">
+      <p class="text-fg-subtle mt-1 text-sm font-medium">
         Adicione jogadores ao elenco do seu time
       </p>
     </header>
 
     <!-- TABELA DE JOGADORES -->
-    <div class="bg-[#0a0b0f] rounded-2xl border border-white/5 overflow-hidden">
+    <div class="bg-surface rounded-2xl border border-fg/5 overflow-hidden">
       <div class="overflow-x-auto">
         <table class="w-full min-w-[1100px]">
           <thead>
-            <tr class="bg-white/5 border-b border-white/10">
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Foto</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Nome</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Idade</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Posição</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Time Atual</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Salário</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Valor</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Multa</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Ações</th>
+            <tr class="bg-fg/5 border-b border-fg/10">
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Foto</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Nome</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Idade</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Posição</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Time Atual</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Salário</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Valor</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Multa</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Ações</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr *ngFor="let jogador of jogadores" class="border-b border-white/5 hover:bg-white/5 transition">
+            <tr *ngFor="let jogador of jogadores" class="border-b border-fg/5 hover:bg-fg/5 transition">
               <!-- Foto -->
               <td class="px-6 py-4">
                 <img
                   [src]="jogador.foto"
                   [alt]="jogador.nome"
                   (error)="$event.target.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%231e2130%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 fill=%22%236b7280%22 text-anchor=%22middle%22 dy=%22.3em%22%3E?%3C/text%3E%3C/svg%3E'"
-                  class="w-10 h-10 rounded-full object-cover border border-white/10"
+                  class="w-10 h-10 rounded-full object-cover border border-fg/10"
                 />
               </td>
 
               <!-- Nome -->
               <td class="px-6 py-4">
-                <span class="text-white font-bold">{{ jogador.nome }}</span>
+                <span class="text-fg font-bold">{{ jogador.nome }}</span>
               </td>
 
               <!-- Idade -->
               <td class="px-6 py-4">
-                <span class="text-gray-400 text-sm">{{ jogador.idade }} anos</span>
+                <span class="text-fg-muted text-sm">{{ jogador.idade }} anos</span>
               </td>
 
               <!-- Posição -->
@@ -62,29 +62,29 @@
 
               <!-- Time Atual -->
               <td class="px-6 py-4">
-                <span class="text-gray-400 text-sm whitespace-nowrap">{{ jogador.timeAtual }}</span>
+                <span class="text-fg-muted text-sm whitespace-nowrap">{{ jogador.timeAtual }}</span>
               </td>
 
               <!-- Salário -->
               <td class="px-6 py-4">
-                <span class="text-gray-300 text-sm font-medium">{{ formatarMoeda(jogador.salario) }}</span>
+                <span class="text-fg-muted text-sm font-medium">{{ formatarMoeda(jogador.salario) }}</span>
               </td>
 
               <!-- Valor -->
               <td class="px-6 py-4">
-                <span class="text-gray-300 text-sm font-medium">{{ formatarMoeda(jogador.valor) }}</span>
+                <span class="text-fg-muted text-sm font-medium">{{ formatarMoeda(jogador.valor) }}</span>
               </td>
 
               <!-- Multa -->
               <td class="px-6 py-4">
-                <span class="text-gray-300 text-sm font-medium">{{ formatarMoeda(jogador.multa) }}</span>
+                <span class="text-fg-muted text-sm font-medium">{{ formatarMoeda(jogador.multa) }}</span>
               </td>
 
               <!-- Ações -->
               <td class="px-6 py-4">
                 <button
                   (click)="abrirModalAdicionar(jogador)"
-                  class="cursor-pointer bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-4 py-2 rounded-xl transition-all">
+                  class="cursor-pointer bg-accent hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] text-accent-fg font-black uppercase tracking-widest text-xs px-4 py-2 rounded-xl transition-all">
                   Adicionar
                 </button>
               </td>
@@ -95,7 +95,7 @@
     </div>
 
     <!-- ESTADO VAZIO -->
-    <div *ngIf="jogadores.length === 0" class="text-center py-12 text-gray-500">
+    <div *ngIf="jogadores.length === 0" class="text-center py-12 text-fg-subtle">
       Nenhum jogador encontrado.
     </div>
 
@@ -105,14 +105,14 @@
 <!-- MODAL DE ADICIONAR JOGADOR -->
 <div *ngIf="mostrarModalAdicionar" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
 
-  <div class="bg-[#0a0b0f] rounded-3xl p-8 w-full max-w-2xl border border-white/5">
+  <div class="bg-surface rounded-3xl p-8 w-full max-w-2xl border border-fg/5">
 
     <div class="flex justify-between items-center mb-6">
       <h3 class="text-2xl font-black mt-2 tracking-tight">
-        Adicionar <span class="text-green-500">{{ jogadorParaAdicionar?.nome }}</span> ao Elenco
+        Adicionar <span class="text-accent">{{ jogadorParaAdicionar?.nome }}</span> ao Elenco
       </h3>
 
-      <button (click)="fecharModalAdicionar()" class="cursor-pointer hover:rotate-90 text-gray-500 hover:text-white transition">
+      <button (click)="fecharModalAdicionar()" class="cursor-pointer hover:rotate-90 text-fg-subtle hover:text-fg transition">
         <i class="fas fa-times"></i>
       </button>
     </div>
@@ -121,11 +121,11 @@
 
       <!-- Salário -->
       <div>
-        <label for="salario" class="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+        <label for="salario" class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">
           Salário Semanal
         </label>
         <div class="relative mt-2">
-          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-bold">R$</span>
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-fg-subtle text-sm font-bold">R$</span>
           <input
             type="text"
             id="salario"
@@ -133,20 +133,20 @@
             [value]="obterValorFormatado(jogadorParaAdicionar!.salario)"
             (input)="formatarSalarioInput($event)"
             placeholder="0"
-            class="w-full bg-[#161920] border border-white/5 rounded-xl pl-11 pr-4 py-3 text-right font-mono focus:border-green-500/50 outline-none transition"
+            class="w-full bg-surface-2 border border-fg/5 rounded-xl pl-11 pr-4 py-3 text-right font-mono focus:border-accent/50 outline-none transition"
             required
           >
         </div>
-        <p class="text-xs text-gray-500 mt-1">{{ formatarMoeda(jogadorParaAdicionar!.salario) }}</p>
+        <p class="text-xs text-fg-subtle mt-1">{{ formatarMoeda(jogadorParaAdicionar!.salario) }}</p>
       </div>
 
       <!-- Valor de Mercado -->
       <div>
-        <label for="valor" class="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+        <label for="valor" class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">
           Valor de Mercado
         </label>
         <div class="relative mt-2">
-          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-bold">€</span>
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-fg-subtle text-sm font-bold">€</span>
           <input
             type="text"
             id="valor"
@@ -154,20 +154,20 @@
             [value]="obterValorFormatado(jogadorParaAdicionar!.valor)"
             (input)="formatarSalarioInput($event)"
             placeholder="0"
-            class="w-full bg-[#161920] border border-white/5 rounded-xl pl-11 pr-4 py-3 text-right font-mono focus:border-green-500/50 outline-none transition"
+            class="w-full bg-surface-2 border border-fg/5 rounded-xl pl-11 pr-4 py-3 text-right font-mono focus:border-accent/50 outline-none transition"
             required
           >
         </div>
-        <p class="text-xs text-gray-500 mt-1">{{ formatarMoeda(jogadorParaAdicionar!.valor) }}</p>
+        <p class="text-xs text-fg-subtle mt-1">{{ formatarMoeda(jogadorParaAdicionar!.valor) }}</p>
       </div>
 
       <!-- Multa Rescisória -->
       <div>
-        <label for="multa" class="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+        <label for="multa" class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">
           Multa Rescisória
         </label>
         <div class="relative mt-2">
-          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-bold">€</span>
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-fg-subtle text-sm font-bold">€</span>
           <input
             type="text"
             id="multa"
@@ -175,23 +175,23 @@
             [value]="obterValorFormatado(jogadorParaAdicionar!.multa)"
             (input)="formatarSalarioInput($event)"
             placeholder="0"
-            class="w-full bg-[#161920] border border-white/5 rounded-xl pl-11 pr-4 py-3 text-right font-mono focus:border-green-500/50 outline-none transition"
+            class="w-full bg-surface-2 border border-fg/5 rounded-xl pl-11 pr-4 py-3 text-right font-mono focus:border-accent/50 outline-none transition"
             required
           >
         </div>
-        <p class="text-xs text-gray-500 mt-1">{{ formatarMoeda(jogadorParaAdicionar!.multa) }}</p>
+        <p class="text-xs text-fg-subtle mt-1">{{ formatarMoeda(jogadorParaAdicionar!.multa) }}</p>
       </div>
 
       <div class="flex justify-end gap-3 pt-2">
         <button
           type="button"
           (click)="fecharModalAdicionar()"
-          class="cursor-pointer bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-al">
+          class="cursor-pointer bg-fg/5 hover:bg-fg/10 text-fg-muted hover:text-fg font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-al">
           Cancelar
         </button>
         <button
           type="submit"
-          class="cursor-pointer bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-8 py-3 rounded-xl transition-all">
+          class="cursor-pointer bg-accent hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] text-accent-fg font-black uppercase tracking-widest text-xs px-8 py-3 rounded-xl transition-all">
           Confirmar Adição
         </button>
       </div>

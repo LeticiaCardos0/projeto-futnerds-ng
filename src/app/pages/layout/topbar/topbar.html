@@ -1,15 +1,15 @@
-<nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#0a0b0f]/95 backdrop-blur-md">
+<nav class="fixed top-0 left-0 right-0 z-50 border-b border-fg/10 bg-surface/95 backdrop-blur-md">
   <div class="max-w-7xl mx-auto px-5">
     <div class="flex items-center justify-between h-16">
 
       <!-- Logo -->
       <a routerLink="/" class="flex items-center gap-3">
         <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/logo-futnerds_8f14a724.png"
+          src="logo.png"
           alt="FUTNERDS" class="w-10 h-10 object-contain transition-transform duration-300 hover:scale-110" />
 
-        <span class="text-white font-bold text-xl tracking-wider">
-          FUT<span class="text-green-500">NERDS</span>
+        <span class="text-fg font-bold text-xl tracking-wider">
+          FUT<span class="text-accent">NERDS</span>
         </span>
       </a>
 
@@ -17,13 +17,13 @@
       <div class="hidden md:flex items-center gap-1">
 
         <a routerLink="/jogadores"
-          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition">
+          class="px-4 py-2 rounded-lg text-sm font-medium text-fg-muted hover:text-fg hover:bg-surface-2 transition">
           Jogadores
         </a>
 
         <div class="relative group">
           <a routerLink="/elenco"
-            class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition flex items-center gap-2 cursor-pointer">
+            class="px-4 py-2 rounded-lg text-sm font-medium text-fg-muted hover:text-fg hover:bg-surface-2 transition flex items-center gap-2 cursor-pointer">
             Meu Time
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
               stroke="currentColor">
@@ -32,10 +32,10 @@
           </a>
 
           <div
-            class="absolute left-0 top-full mt-2 w-72 bg-[#13151c] border border-[#1e2130] rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            class="absolute left-0 top-full mt-2 w-72 bg-surface-2 border border-surface-3 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
 
             <a routerLink="/times"
-              class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white rounded-t-xl">
+              class="block px-4 py-3 text-fg-muted hover:bg-surface-2 hover:text-fg rounded-t-xl">
               Monte seu Time
             </a>
 
@@ -46,7 +46,7 @@
         <div class="relative group">
 
           <a routerLink="/financeiro"
-            class="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#161820] transition flex items-center gap-2 cursor-pointer">
+            class="px-4 py-2 rounded-lg text-sm font-medium text-fg-muted hover:text-fg hover:bg-surface-2 transition flex items-center gap-2 cursor-pointer">
             Financeiro
 
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
@@ -56,21 +56,21 @@
           </a>
 
           <div
-            class="absolute left-0 top-full mt-2 w-72 bg-[#13151c] border border-[#1e2130] rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            class="absolute left-0 top-full mt-2 w-72 bg-surface-2 border border-surface-3 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
 
-            <a routerLink="/transacoes" class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white rounded-t-xl">
+            <a routerLink="/transacoes" class="block px-4 py-3 text-fg-muted hover:bg-surface-2 hover:text-fg rounded-t-xl">
               Transações
             </a>
 
-            <a routerLink="/orcamentos" class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white">
+            <a routerLink="/orcamentos" class="block px-4 py-3 text-fg-muted hover:bg-surface-2 hover:text-fg">
               Orçamento
             </a>
 
-            <a routerLink="/comissao-tecnica" class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white">
+            <a routerLink="/comissao-tecnica" class="block px-4 py-3 text-fg-muted hover:bg-surface-2 hover:text-fg">
               Comissão Técnica
             </a>
 
-            <a routerLink="/relatorios-financeiros" class="block px-4 py-3 text-gray-300 hover:bg-[#161820] hover:text-white rounded-b-xl">
+            <a routerLink="/relatorios-financeiros" class="block px-4 py-3 text-fg-muted hover:bg-surface-2 hover:text-fg rounded-b-xl">
               Relatórios Financeiros
             </a>
 
@@ -81,12 +81,22 @@
 
       <div class="hidden md:flex items-center gap-2">
 
+        <button type="button" (click)="temaService.toggleTema()"
+          class="w-9 h-9 flex items-center justify-center rounded-lg text-fg-muted hover:text-fg hover:bg-surface-2 transition cursor-pointer"
+          [attr.aria-label]="temaService.tema() === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'">
+          @if (temaService.tema() === 'dark') {
+            <i class="fa-solid fa-sun"></i>
+          } @else {
+            <i class="fa-solid fa-moon"></i>
+          }
+        </button>
+
         <button routerLink="/login"
-          class="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-[#161820] rounded-lg transition cursor-pointer">
+          class="px-4 py-2 text-sm text-fg-muted hover:text-fg hover:bg-surface-2 rounded-lg transition cursor-pointer">
           Entrar
         </button>
         <button routerLink="/cadastro"
-          class="px-5 py-2 text-sm font-semibold bg-green-500 text-black rounded-lg hover:bg-green-600 transition cursor-pointer">
+          class="px-5 py-2 text-sm font-semibold bg-accent text-accent-fg rounded-lg hover:bg-accent-hover transition cursor-pointer">
           Criar Conta
         </button>
 

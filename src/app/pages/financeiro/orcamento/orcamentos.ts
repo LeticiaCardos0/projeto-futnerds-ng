@@ -58,7 +58,7 @@ export class OrcamentosComponent {
       gasto: 42000000,
       descricao: 'Receita de patrocinadores e naming rights',
       icone: 'fa-handshake',
-      corIcone: 'text-blue-400',
+      corIcone: 'text-info',
     },
     {
       id: 3,
@@ -213,7 +213,7 @@ export class OrcamentosComponent {
         gasto: Number(this.form.gasto) || 0,
         descricao: this.form.descricao || '',
         icone: 'fa-tag',
-        corIcone: 'text-green-400',
+        corIcone: 'text-accent',
       };
       this.categorias.push(novaCategoria);
       this.messageService.add({

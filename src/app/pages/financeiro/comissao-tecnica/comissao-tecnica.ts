@@ -285,12 +285,12 @@ export class ComissaoTecnicaComponent {
     const mapa: Record<string, string> = {
       Treinador: 'text-purple-500',
       'Preparador Físico': 'text-orange-400',
-      Fisioterapeuta: 'text-blue-400',
-      Analista: 'text-yellow-400',
-      Diretoria: 'text-green-500',
-      Outro: 'text-gray-400',
+      Fisioterapeuta: 'text-info',
+      Analista: 'text-warning',
+      Diretoria: 'text-accent',
+      Outro: 'text-fg-muted',
     };
-    return mapa[categoria] || 'text-gray-400';
+    return mapa[categoria] || 'text-fg-muted';
   }
 
   alternarMoeda(): void {

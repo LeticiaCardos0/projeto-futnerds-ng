@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TemaService } from '../../tema/tema';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class HomeComponent {}
+export class HomeComponent {
+    protected readonly temaService = inject(TemaService);
+}

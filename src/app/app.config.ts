@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: Aura,
         options: {
-          darkModeSelector: 'system' // Ele vai seguir o tema do seu Windows/Navegador
+          darkModeSelector: '.dark' // Segue a classe controlada pelo ThemeService, não mais o SO
         }
       }
     })

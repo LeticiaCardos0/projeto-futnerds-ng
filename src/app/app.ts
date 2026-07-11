@@ -1,9 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { Topbar } from "./pages/layout/topbar/topbar";
 import { Footer } from "./pages/layout/footer/footer";
-
-
+import { TemaService } from './tema/tema';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +12,7 @@ import { Footer } from "./pages/layout/footer/footer";
 })
 export class App {
   protected readonly title = signal('projeto-futnerds-ng');
+
+  // Injetado aqui para aplicar a classe .dark/.light assim que o app inicializa
+  protected readonly temaService = inject(TemaService);
 }

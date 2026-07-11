@@ -1,36 +1,36 @@
 <p-toast position="top-right"></p-toast>
 <p-confirmDialog [style]="{ width: '28rem' }" />
 
-<div class="min-h-screen bg-[#030609] text-white pt-32 pb-16">
+<div class="min-h-screen bg-bg text-fg pt-32 pb-16">
   <div class="max-w-7xl mx-auto px-6">
 
     <!-- HEADER -->
-    <header class="pb-6 border-b border-white/10 mb-8">
+    <header class="pb-6 border-b border-fg/10 mb-8">
       <h2 class="text-3xl font-black uppercase tracking-tighter">
-        Escolha seu <span class="text-green-500">Time</span>
+        Escolha seu <span class="text-accent">Time</span>
       </h2>
-      <p class="text-gray-500 mt-1 text-sm font-medium">
+      <p class="text-fg-subtle mt-1 text-sm font-medium">
         Selecione o clube que você vai gerenciar
       </p>
     </header>
 
     <!-- TABELA DE TIMES -->
-    <div class="bg-[#0a0b0f] rounded-2xl border border-white/5 overflow-hidden">
+    <div class="bg-surface rounded-2xl border border-fg/5 overflow-hidden">
       <div class="overflow-x-auto">
         <table class="w-full">
           <thead>
-            <tr class="bg-white/5 border-b border-white/10">
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Logo</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Nome</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">País</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Liga</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Orçamento</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Ações</th>
+            <tr class="bg-fg/5 border-b border-fg/10">
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Logo</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Nome</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">País</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Liga</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Orçamento</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Ações</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr *ngFor="let time of times" class="border-b border-white/5 hover:bg-white/5 transition">
+            <tr *ngFor="let time of times" class="border-b border-fg/5 hover:bg-fg/5 transition">
               <!-- Logo -->
               <td class="px-6 py-4">
                 <div class="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center">
@@ -45,30 +45,30 @@
 
               <!-- Nome -->
               <td class="px-6 py-4">
-                <span class="text-white font-bold">{{ time.nome }}</span>
+                <span class="text-fg font-bold">{{ time.nome }}</span>
               </td>
 
               <!-- País -->
               <td class="px-6 py-4">
-                <span class="text-gray-400 text-sm">{{ time.pais }}</span>
+                <span class="text-fg-muted text-sm">{{ time.pais }}</span>
               </td>
 
               <!-- Liga -->
               <td class="px-6 py-4">
-                <span class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-blue-500/10 text-blue-400">
+                <span class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-info/10 text-info">
                   {{ time.liga }}
                 </span>
               </td>
 
               <!-- Orçamento -->
               <td class="px-6 py-4">
-                <span class="text-gray-300 text-sm font-medium">{{ formatarMoeda(time.orcamento) }}</span>
+                <span class="text-fg-muted text-sm font-medium">{{ formatarMoeda(time.orcamento) }}</span>
               </td>
 
               <!-- Ações -->
               <td class="px-6 py-4">
                 <button (click)="selecionarTime(time)"
-                  class="cursor-pointer bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-4 py-2 rounded-xl transition-all">
+                  class="cursor-pointer bg-accent hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] text-accent-fg font-black uppercase tracking-widest text-xs px-4 py-2 rounded-xl transition-all">
                   Selecionar
                 </button>
               </td>
@@ -79,7 +79,7 @@
     </div>
 
     <!-- ESTADO VAZIO -->
-    <div *ngIf="times.length === 0" class="text-center py-12 text-gray-500">
+    <div *ngIf="times.length === 0" class="text-center py-12 text-fg-subtle">
       Nenhum time encontrado.
     </div>
 

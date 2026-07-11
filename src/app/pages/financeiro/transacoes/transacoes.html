@@ -1,15 +1,15 @@
 <p-toast />
-<div class="min-h-screen bg-[#030609] text-white pt-24 pb-10">
+<div class="min-h-screen bg-bg text-fg pt-24 pb-10">
 
   <div class="max-w-[1600px] mx-auto px-8">
     <!-- Header -->
-    <div class="border-b border-white/5 py-6">
+    <div class="border-b border-fg/5 py-6">
       <div class="flex flex-wrap gap-4 justify-between items-center">
         <div>
           <h2 class="text-3xl font-black uppercase tracking-tighter">
-            Transações <span class="text-green-500">Financeiras</span>
+            Transações <span class="text-accent">Financeiras</span>
           </h2>
-          <p class="text-gray-500 mt-1 text-sm font-medium">
+          <p class="text-fg-subtle mt-1 text-sm font-medium">
             Registre e acompanhe todas as movimentações financeiras
           </p>
         </div>
@@ -17,13 +17,13 @@
         <div class="flex items-center gap-3">
           <!-- Botão de troca de moeda -->
           <button (click)="alternarMoeda()" title="Alternar moeda (Real / Euro)"
-            class="cursor-pointer bg-white/5 hover:bg-white/10 border border-white/10 text-white font-black uppercase tracking-widest text-xs px-5 py-3 rounded-xl transition-all flex items-center gap-2">
-            <i class="fas fa-exchange-alt text-green-500"></i>
+            class="cursor-pointer bg-fg/5 hover:bg-fg/10 border border-fg/10 text-fg font-black uppercase tracking-widest text-xs px-5 py-3 rounded-xl transition-all flex items-center gap-2">
+            <i class="fas fa-exchange-alt text-accent"></i>
             <span>{{ moedaAtual === 'BRL' ? 'R$ → €' : '€ → R$' }}</span>
           </button>
 
           <button (click)="abrirModalCadastro()"
-            class="cursor-pointer bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all flex items-center gap-2">
+            class="cursor-pointer bg-accent hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] text-accent-fg font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all flex items-center gap-2">
             <i class="fas fa-plus"></i>
             <span>Registrar Transação</span>
           </button>
@@ -32,55 +32,55 @@
     </div>
 
     <!-- Summary Cards -->
-    <div class="border-b border-white/5 py-6">
+    <div class="border-b border-fg/5 py-6">
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 
-        <div class="bg-[#0a0b0f] rounded-2xl p-5 border border-white/5">
+        <div class="bg-surface rounded-2xl p-5 border border-fg/5">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Total de Receitas</p>
-              <p class="text-2xl font-black text-green-500 mt-2 tracking-tight">
+              <p class="text-fg-subtle text-[10px] font-bold uppercase tracking-widest">Total de Receitas</p>
+              <p class="text-2xl font-black text-accent mt-2 tracking-tight">
                 {{ simboloMoeda }}{{ totalReceitas | number:'1.0-0' }}
               </p>
             </div>
-            <i class="fas fa-arrow-up text-green-500 text-2xl opacity-20"></i>
+            <i class="fas fa-arrow-up text-accent text-2xl opacity-20"></i>
           </div>
         </div>
 
-        <div class="bg-[#0a0b0f] rounded-2xl p-5 border border-white/5">
+        <div class="bg-surface rounded-2xl p-5 border border-fg/5">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Total de Despesas</p>
-              <p class="text-2xl font-black text-red-400 mt-2 tracking-tight">
+              <p class="text-fg-subtle text-[10px] font-bold uppercase tracking-widest">Total de Despesas</p>
+              <p class="text-2xl font-black text-danger mt-2 tracking-tight">
                 {{ simboloMoeda }}{{ totalDespesas | number:'1.0-0' }}
               </p>
             </div>
-            <i class="fas fa-arrow-down text-red-400 text-2xl opacity-20"></i>
+            <i class="fas fa-arrow-down text-danger text-2xl opacity-20"></i>
           </div>
         </div>
 
-        <div class="bg-[#0a0b0f] rounded-2xl p-5 border border-white/5">
+        <div class="bg-surface rounded-2xl p-5 border border-fg/5">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Saldo Líquido</p>
+              <p class="text-fg-subtle text-[10px] font-bold uppercase tracking-widest">Saldo Líquido</p>
               <p class="text-2xl font-black mt-2 tracking-tight"
-                [ngClass]="{'text-green-500': saldoLiquido > 0, 'text-red-400': saldoLiquido < 0, 'text-white': saldoLiquido === 0}">
+                [ngClass]="{'text-accent': saldoLiquido > 0, 'text-danger': saldoLiquido < 0, 'text-fg': saldoLiquido === 0}">
                 {{ simboloMoeda }}{{ saldoLiquido | number:'1.0-0' }}
               </p>
             </div>
-            <i class="fas fa-wallet text-gray-600 text-2xl opacity-40"></i>
+            <i class="fas fa-wallet text-fg-subtle text-2xl opacity-40"></i>
           </div>
         </div>
 
-        <div class="bg-[#0a0b0f] rounded-2xl p-5 border border-white/5">
+        <div class="bg-surface rounded-2xl p-5 border border-fg/5">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Total de Transações</p>
-              <p class="text-2xl font-black text-white mt-2 tracking-tight">
+              <p class="text-fg-subtle text-[10px] font-bold uppercase tracking-widest">Total de Transações</p>
+              <p class="text-2xl font-black text-fg mt-2 tracking-tight">
                 {{ totalTransacoes }}
               </p>
             </div>
-            <i class="fas fa-exchange-alt text-gray-600 text-2xl opacity-40"></i>
+            <i class="fas fa-exchange-alt text-fg-subtle text-2xl opacity-40"></i>
           </div>
         </div>
 
@@ -88,19 +88,19 @@
     </div>
 
     <!-- Filters -->
-    <div class="border-b border-white/5 py-6">
+    <div class="border-b border-fg/5 py-6">
       <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
 
         <div class="flex flex-col gap-2">
-          <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Pesquisar</label>
+          <label class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Pesquisar</label>
           <input type="text" [(ngModel)]="filtroPesquisa" name="filtroPesquisa" placeholder="Descrição..."
-            class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-gray-700 outline-none transition focus:border-green-500/50" />
+            class="w-full bg-surface-2 border border-fg/5 rounded-xl px-4 py-2.5 text-sm text-fg placeholder:text-fg-subtle outline-none transition focus:border-accent/50" />
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Tipo</label>
+          <label class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Tipo</label>
           <select [(ngModel)]="filtroTipo" name="filtroTipo"
-            class="cursor-pointer w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
+            class="cursor-pointer w-full bg-surface-2 border border-fg/5 rounded-xl px-4 py-2.5 text-sm text-fg outline-none transition focus:border-accent/50">
             <option value="Todos">Todos</option>
             <option value="Receita">Receita</option>
             <option value="Despesa">Despesa</option>
@@ -108,9 +108,9 @@
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Categoria</label>
+          <label class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Categoria</label>
           <select [(ngModel)]="filtroCategoria" name="filtroCategoria"
-            class="cursor-pointer w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50">
+            class="cursor-pointer w-full bg-surface-2 border border-fg/5 rounded-xl px-4 py-2.5 text-sm text-fg outline-none transition focus:border-accent/50">
             <option value="Todas">Todas</option>
             <option value="Venda de Jogador">Venda de Jogador</option>
             <option value="Compra de Jogador">Compra de Jogador</option>
@@ -121,24 +121,24 @@
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Data Início</label>
+          <label class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Data Início</label>
           <input type="date" [(ngModel)]="filtroDataInicio" name="filtroDataInicio"
-            class="cursor-pointer w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50" />
+            class="cursor-pointer w-full bg-surface-2 border border-fg/5 rounded-xl px-4 py-2.5 text-sm text-fg outline-none transition focus:border-accent/50" />
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Data Fim</label>
+          <label class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Data Fim</label>
           <input type="date" [(ngModel)]="filtroDataFim" name="filtroDataFim"
-            class="cursor-pointer w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white outline-none transition focus:border-green-500/50" />
+            class="cursor-pointer w-full bg-surface-2 border border-fg/5 rounded-xl px-4 py-2.5 text-sm text-fg outline-none transition focus:border-accent/50" />
         </div>
 
         <div class="flex items-end gap-2">
           <button type="button" (click)="limparFiltros()"
-            class="bg-[#161920] cursor-pointer border border-white/5 hover:border-white/10 text-gray-400 hover:text-white font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
+            class="bg-surface-2 cursor-pointer border border-fg/5 hover:border-fg/10 text-fg-muted hover:text-fg font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
             <i class="fas fa-eraser"></i>
           </button>
           <div
-            class="w-full bg-green-500/10 border border-green-500/20 text-green-500 font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-xl flex items-center justify-center gap-2">
+            class="w-full bg-accent/10 border border-accent/20 text-accent font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-xl flex items-center justify-center gap-2">
             <i class="fas fa-filter"></i> {{ indicesFiltrados.length }} resultado(s)
           </div>
         </div>
@@ -148,54 +148,54 @@
 
     <!-- Transactions Table -->
     <div class="py-8">
-      <div class="bg-[#0a0b0f] rounded-2xl overflow-hidden border border-white/5">
+      <div class="bg-surface rounded-2xl overflow-hidden border border-fg/5">
 
         <table class="w-full">
-          <thead class="border-b border-white/5">
+          <thead class="border-b border-fg/5">
             <tr>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Data</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Tipo</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Descrição</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Categoria</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Valor</th>
-              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-gray-500">Saldo</th>
-              <th class="px-6 py-4 text-center text-[10px] font-bold uppercase tracking-widest text-gray-500">Ações</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Data</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Tipo</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Descrição</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Categoria</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Valor</th>
+              <th class="px-6 py-4 text-left text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Saldo</th>
+              <th class="px-6 py-4 text-center text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Ações</th>
             </tr>
           </thead>
 
           <tbody class="divide-y divide-white/5">
-            <tr *ngFor="let i of indicesFiltrados" class="hover:bg-white/[0.02] transition">
-              <td class="px-6 py-4 text-sm text-gray-400">{{ datas[i] }}</td>
+            <tr *ngFor="let i of indicesFiltrados" class="hover:bg-fg/[0.02] transition">
+              <td class="px-6 py-4 text-sm text-fg-muted">{{ datas[i] }}</td>
               <td class="px-6 py-4">
                 <span *ngIf="tipos[i] === 'Receita'"
-                  class="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
+                  class="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
                   <i class="fas fa-arrow-down text-[10px]"></i> Receita
                 </span>
                 <span *ngIf="tipos[i] === 'Despesa'"
-                  class="bg-red-500/10 text-red-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
+                  class="bg-danger/10 text-danger px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 w-fit">
                   <i class="fas fa-arrow-up text-[10px]"></i> Despesa
                 </span>
               </td>
-              <td class="px-6 py-4 text-sm text-white">{{ descricoes[i] }}</td>
+              <td class="px-6 py-4 text-sm text-fg">{{ descricoes[i] }}</td>
               <td class="px-6 py-4">
-                <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">
+                <span class="bg-fg/5 text-fg-muted px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">
                   {{ categorias[i] }}
                 </span>
               </td>
               <td class="px-6 py-4 text-sm font-black"
-                [ngClass]="{'text-green-500': tipos[i] === 'Receita', 'text-red-400': tipos[i] === 'Despesa'}">
+                [ngClass]="{'text-accent': tipos[i] === 'Receita', 'text-danger': tipos[i] === 'Despesa'}">
                 {{ tipos[i] === 'Receita' ? '+' : '-' }}{{ simboloMoeda }}{{ converter(valores[i]) | number:'1.0-0' }}
               </td>
-              <td class="px-6 py-4 text-sm text-gray-400">
+              <td class="px-6 py-4 text-sm text-fg-muted">
                 {{ simboloMoeda }}{{ calcularSaldoAte(i) | number:'1.0-0' }}
               </td>
               <td class="px-6 py-4">
                 <div class="flex justify-center gap-3">
                   <button (click)="preencherCamposParaEditar(tipos[i], categorias[i], descricoes[i], datas[i], valores[i])"
-                    class="cursor-pointer text-gray-600 hover:text-green-400 transition" title="Editar">
+                    class="cursor-pointer text-fg-subtle hover:text-accent transition" title="Editar">
                     <i class="fas fa-edit"></i>
                   </button>
-                  <button (click)="apagar(descricoes[i])" class="text-gray-600 hover:text-red-400 transition" title="Excluir">
+                  <button (click)="apagar(descricoes[i])" class="text-fg-subtle hover:text-danger transition" title="Excluir">
                     <i class="cursor-pointer fas fa-trash"></i>
                   </button>
                 </div>
@@ -203,7 +203,7 @@
             </tr>
 
             <tr *ngIf="indicesFiltrados.length === 0">
-              <td colspan="7" class="px-6 py-10 text-center text-sm text-gray-600">
+              <td colspan="7" class="px-6 py-10 text-center text-sm text-fg-subtle">
                 Nenhuma transação encontrada para os filtros selecionados.
               </td>
             </tr>
@@ -213,24 +213,24 @@
 
       <!-- Pagination -->
       <div class="mt-6 flex justify-between items-center">
-        <p class="text-gray-600 text-xs font-bold uppercase tracking-widest">
+        <p class="text-fg-subtle text-xs font-bold uppercase tracking-widest">
           Mostrando {{ indicesFiltrados.length }} de {{ totalTransacoes }} transações
         </p>
 
         <div class="flex gap-2">
           <button
-            class="bg-[#0a0b0f] border border-white/5 hover:border-white/10 text-gray-400 hover:text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">
+            class="bg-surface border border-fg/5 hover:border-fg/10 text-fg-muted hover:text-fg px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">
             ← Anterior
           </button>
 
           <button
-            class="bg-green-500 text-black font-black px-4 py-2 rounded-xl text-xs uppercase tracking-wider">1</button>
+            class="bg-accent text-accent-fg font-black px-4 py-2 rounded-xl text-xs uppercase tracking-wider">1</button>
 
           <button
-            class="bg-[#0a0b0f] border border-white/5 hover:border-white/10 text-gray-400 hover:text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">2</button>
+            class="bg-surface border border-fg/5 hover:border-fg/10 text-fg-muted hover:text-fg px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">2</button>
 
           <button
-            class="bg-[#0a0b0f] border border-white/5 hover:border-white/10 text-gray-400 hover:text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">
+            class="bg-surface border border-fg/5 hover:border-fg/10 text-fg-muted hover:text-fg px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition">
             Próximo →
           </button>
         </div>
@@ -239,14 +239,14 @@
 
     <!-- Modal -->
     <div *ngIf="modalAberto" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
-      <div class="bg-[#0a0b0f] rounded-3xl p-8 max-w-3xl w-full border border-white/5 shadow-2xl">
+      <div class="bg-surface rounded-3xl p-8 max-w-3xl w-full border border-fg/5 shadow-2xl">
 
         <div class="flex justify-between items-center mb-8">
           <h3 class="text-2xl font-black uppercase tracking-tighter">
-            {{ indiceParaEditar === -1 ? 'Registrar' : 'Editar' }} <span class="text-green-500">Transação</span>
+            {{ indiceParaEditar === -1 ? 'Registrar' : 'Editar' }} <span class="text-accent">Transação</span>
           </h3>
 
-          <button (click)="fecharModal()" class="cursor-pointer hover:rotate-90 text-gray-600 hover:text-white transition text-lg">
+          <button (click)="fecharModal()" class="cursor-pointer hover:rotate-90 text-fg-subtle hover:text-fg transition text-lg">
             <i class="fas fa-times"></i>
           </button>
         </div>
@@ -255,9 +255,9 @@
 
           <div class="grid grid-cols-2 gap-4">
             <div class="flex flex-col gap-2">
-              <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Tipo</label>
+              <label class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Tipo</label>
               <select [(ngModel)]="tipo" name="tipo"
-                class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white outline-none transition focus:border-green-500/50">
+                class="w-full bg-surface-2 border border-fg/5 rounded-xl px-4 py-3 text-sm text-fg outline-none transition focus:border-accent/50">
                 <option value="">Selecione</option>
                 <option value="Receita">Receita</option>
                 <option value="Despesa">Despesa</option>
@@ -265,9 +265,9 @@
             </div>
 
             <div class="flex flex-col gap-2">
-              <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Categoria</label>
+              <label class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Categoria</label>
               <select [(ngModel)]="categoria" name="categoria"
-                class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white outline-none transition focus:border-green-500/50">
+                class="w-full bg-surface-2 border border-fg/5 rounded-xl px-4 py-3 text-sm text-fg outline-none transition focus:border-accent/50">
                 <option value="">Selecione</option>
                 <option value="Venda de Jogador">Venda de Jogador</option>
                 <option value="Compra de Jogador">Compra de Jogador</option>
@@ -279,33 +279,33 @@
           </div>
 
           <div class="flex flex-col gap-2">
-            <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Descrição</label>
+            <label class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Descrição</label>
             <input name="descricao" type="text" [(ngModel)]="descricao" placeholder="Ex: Venda de Messi para PSG"
-              class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-700 outline-none transition focus:border-green-500/50" />
+              class="w-full bg-surface-2 border border-fg/5 rounded-xl px-4 py-3 text-sm text-fg placeholder:text-fg-subtle outline-none transition focus:border-accent/50" />
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div class="flex flex-col gap-2">
-              <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Valor (em R$)</label>
+              <label class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Valor (em R$)</label>
               <input [(ngModel)]="valor" name="valor" type="number" placeholder="Ex: 150000000"
-                class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-700 outline-none transition focus:border-green-500/50" />
+                class="w-full bg-surface-2 border border-fg/5 rounded-xl px-4 py-3 text-sm text-fg placeholder:text-fg-subtle outline-none transition focus:border-accent/50" />
             </div>
 
             <div class="flex flex-col gap-2">
-              <label class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Data</label>
+              <label class="text-[10px] font-bold uppercase tracking-widest text-fg-subtle">Data</label>
               <input type="date" [(ngModel)]="data" name="data"
-                class="w-full bg-[#161920] border border-white/5 rounded-xl px-4 py-3 text-sm text-white outline-none transition focus:border-green-500/50" />
+                class="w-full bg-surface-2 border border-fg/5 rounded-xl px-4 py-3 text-sm text-fg outline-none transition focus:border-accent/50" />
             </div>
           </div>
 
           <div class="flex justify-end gap-3 mt-2">
             <button type="button" (click)="fecharModal()"
-              class="cursor-pointer bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all">
+              class="cursor-pointer bg-fg/5 hover:bg-fg/10 text-fg-muted hover:text-fg font-black uppercase tracking-widest text-xs px-6 py-3 rounded-xl transition-all">
               Cancelar
             </button>
 
             <button type="submit"
-              class="cursor-pointer bg-green-500 hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] text-black font-black uppercase tracking-widest text-xs px-8 py-3 rounded-xl transition-all">
+              class="cursor-pointer bg-accent hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] text-accent-fg font-black uppercase tracking-widest text-xs px-8 py-3 rounded-xl transition-all">
               {{ indiceParaEditar === -1 ? 'Registrar Transação →' : 'Salvar Alterações →' }}
             </button>
           </div>
