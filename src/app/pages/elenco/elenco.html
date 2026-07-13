@@ -176,12 +176,12 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let jogador of elenco" class="border-b border-fg/5 hover:bg-fg/5 transition">
+            <tr *ngFor="let jogador of elenco" class="border-b border-fg/10 transition hover:bg-accent/5">
               <td class="px-6 py-4">
                 <img [src]="jogador.foto" [alt]="jogador.nome" class="w-10 h-10 rounded-full object-cover border border-fg/10" />
               </td>
               <td class="px-6 py-4">
-                <span class="text-fg font-bold">{{ jogador.nome }}</span>
+                <span class="text-fg font-bold bg-surface">{{ jogador.nome }}</span>
               </td>
               <td class="px-6 py-4">
                 <span class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-purple-500/10 text-purple-400">

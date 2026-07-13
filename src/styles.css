@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@import "primeicons/primeicons.css";
+
 
 @theme {
   --color-bg: #030609;
