@@ -1,3 +1,29 @@
+.campo-futebol {
+    background: var(--campo-bg);
+}
+
+.listra-campo {
+    background: transparent;
+}
+
+.listra-campo.listra-clara {
+    background: var(--campo-listra-clara);
+}
+
+.nome-jogador {
+    color: var(--campo-nome-text);
+    background: var(--campo-nome-bg);
+}
+
+.posicao-vazia {
+    color: var(--campo-posicao-text);
+    background: var(--campo-posicao-bg);
+}
+
+.foto-jogador {
+    box-shadow: var(--campo-sombra-foto);
+}
+
 /* ============================
    CONFIRM DIALOG - PADRÃO SITE
 ============================= */

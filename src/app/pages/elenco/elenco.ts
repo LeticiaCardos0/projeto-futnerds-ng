@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TimeSelecionado, CHAVE_TIME_SELECIONADO } from '../times/times';
@@ -8,6 +8,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
+import { TemaService } from '../../tema/tema';
 
 interface SlotFormacao {
   posicao: string; // deve bater com JogadorElenco.posicao
@@ -96,6 +97,9 @@ const FORMACOES: Record<string, SlotFormacao[]> = {
   styleUrl: './elenco.css'
 })
 export class ElencoComponent implements OnInit {
+
+  protected readonly temaService = inject(TemaService);
+
   timeSelecionado: TimeSelecionado | null = null;
   elenco: JogadorElenco[] = [];
   totalGastos: number = 0;
@@ -104,24 +108,80 @@ export class ElencoComponent implements OnInit {
   formacoesDisponiveis: string[] = ['4-3-3', '4-4-2', '3-5-2', '4-2-3-1', '5-3-2'];
   formacaoSelecionada: string = '4-3-3';
 
-  get slotsDaFormacao(): SlotComJogador[] {
-    const slots = FORMACOES[this.formacaoSelecionada] || [];
+get slotsDaFormacao(): SlotComJogador[] {
 
-    // Agrupa os jogadores do elenco por posição, sem alterar o array original.
-    const poolPorPosicao: Record<string, JogadorElenco[]> = {};
-    for (const jogador of this.elenco) {
-      if (!poolPorPosicao[jogador.posicao]) {
-        poolPorPosicao[jogador.posicao] = [];
-      }
-      poolPorPosicao[jogador.posicao].push(jogador);
+  const slots = FORMACOES[this.formacaoSelecionada] || [];
+
+  const poolPorPosicao: Record<string, JogadorElenco[]> = {};
+
+  this.elenco.forEach(jogador => {
+
+    if (!poolPorPosicao[jogador.posicao]) {
+      poolPorPosicao[jogador.posicao] = [];
     }
 
-    return slots.map((slot) => {
-      const pool = poolPorPosicao[slot.posicao] || [];
-      const jogador = pool.length > 0 ? pool.shift()! : null;
-      return { ...slot, jogador };
-    });
-  }
+    poolPorPosicao[jogador.posicao].push(jogador);
+
+  });
+
+  return slots.map(slot => {
+
+    const jogadoresPosicao = poolPorPosicao[slot.posicao] || [];
+
+    let jogador: JogadorElenco | null = null;
+
+    // procura um titular
+    const titular = jogadoresPosicao.find(j => j.titular);
+
+    if (titular) {
+
+      jogador = titular;
+
+      jogadoresPosicao.splice(
+        jogadoresPosicao.indexOf(titular),
+        1
+      );
+
+    } else if (jogadoresPosicao.length) {
+
+      jogador = jogadoresPosicao.shift()!;
+
+    }
+
+    return {
+      ...slot,
+      jogador
+    };
+    
+
+  });
+
+  
+
+}
+definirTitular(jogador: JogadorElenco): void {
+
+  this.elenco.forEach(j => {
+
+    if (j.posicao === jogador.posicao) {
+      j.titular = false;
+    }
+
+  });
+
+  jogador.titular = true;
+
+  localStorage.setItem(
+    CHAVE_ELENCO,
+    JSON.stringify(this.elenco)
+  );
+  this.messageService.add({
+          severity: 'success',
+          summary: 'Jogador Titular',
+          detail: `${jogador.nome} foi adicionado do elenco titular.`
+        });
+
+}
 
   get titularesEscalados(): number {
     return this.slotsDaFormacao.filter((s) => s.jogador !== null).length;

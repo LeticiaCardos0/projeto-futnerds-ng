@@ -17,6 +17,8 @@ export interface JogadorElenco {
   salario: number;
   valor: number;
   multa: number;
+
+  titular?: boolean;
 }
 
 export const CHAVE_ELENCO = 'futnerds_elenco';
@@ -708,6 +710,7 @@ export class JogadoresComponent implements OnInit {
   private carregarTimeSelecionado(): void {
     const dados = localStorage.getItem(CHAVE_TIME_SELECIONADO);
     this.timeSelecionado = dados ? JSON.parse(dados) : null;
+    
   }
 
   private carregarElenco(): JogadorElenco[] {
