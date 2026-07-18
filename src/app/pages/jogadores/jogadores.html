@@ -137,7 +137,7 @@
           type="button"
           (click)="paginaAnterior()"
           [disabled]="paginaAtual === 1"
-          class="cursor-pointer disabled:cursor-not-allowed disabled:opacity-30 w-9 h-9 flex items-center justify-center rounded-lg bg-surface-2 hover:bg-fg/10 text-fg-muted hover:text-fg transition">
+          class="cursor-pointer disabled:cursor-not-allowed disabled:opacity-30 w-9 h-9 flex items-center justify-center rounded-lg bg-surface-2 hover:bg-fg/10 hover:text-fg transition">
           <i class="fas fa-chevron-left text-xs"></i>
         </button>
 
@@ -149,7 +149,7 @@
           [class.text-accent-fg]="pagina === paginaAtual"
           [class.bg-surface-2]="pagina !== paginaAtual"
           [class.text-fg-muted]="pagina !== paginaAtual"
-          class="cursor-pointer w-9 h-9 flex items-center justify-center rounded-lg font-bold text-xs hover:bg-accent-hover hover:text-accent-fg transition">
+          class="cursor-pointer w-9 h-9 flex items-center justify-center rounded-lg font-bold text-xs hover:bg-fg/10 hover:text-fg transition">
           {{ pagina }}
         </button>
 
