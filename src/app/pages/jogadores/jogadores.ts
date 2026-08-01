@@ -45,7 +45,7 @@ interface Jogador {
 })
 export class JogadoresComponent implements OnInit {
   jogadores: Jogador[] = [
-     { id: 1, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/e_haaland_18d525d6.png', nome: 'E. Haaland', idade: 24, posicao: 'Atacante', timeAtual: 'Manchester City', salario: 550000, valor: 172500000, multa: 34500000 },
+    { id: 1, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/e_haaland_18d525d6.png', nome: 'E. Haaland', idade: 24, posicao: 'Atacante', timeAtual: 'Manchester City', salario: 550000, valor: 172500000, multa: 34500000 },
     { id: 2, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/k_mbapp_a6fff8a4.png', nome: 'K. Mbappé', idade: 26, posicao: 'Ponta', timeAtual: 'Real Madrid', salario: 500000, valor: 157000000, multa: 31400000 },
     { id: 3, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/vitinha_62b448f1.png', nome: 'Vitinha', idade: 25, posicao: 'Meio-Campo', timeAtual: 'Paris Saint-Germain', salario: 420000, valor: 149000000, multa: 29800000 },
     { id: 4, foto: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663216916845/hhB4oykfDQM9yCvhQGaX3n/pedri_a88bfe80.png', nome: 'Pedri', idade: 22, posicao: 'Meio-Campo', timeAtual: 'FC Barcelona', salario: 380000, valor: 165000000, multa: 33000000 },
