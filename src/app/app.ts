@@ -6,7 +6,7 @@ import { TemaService } from './tema/tema';
 
 @Component({
   selector: 'app-root',
-  imports: [Topbar, Footer, RouterOutlet, RouterLink],
+  imports: [Topbar, Footer, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

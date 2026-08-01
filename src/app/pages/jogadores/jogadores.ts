@@ -38,7 +38,7 @@ interface Jogador {
 @Component({
   selector: 'app-jogadores',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule, ToastModule],
+  imports: [CommonModule, FormsModule, ToastModule],
   providers: [MessageService],
   templateUrl: './jogadores.html',
   styleUrl: './jogadores.css'
